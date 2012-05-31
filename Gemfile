@@ -7,6 +7,7 @@ gem 'heroku'
 gem 'thin'
 gem 'jquery-rails' # Let's consider using google CDN
 gem 'haml'
+gem 'therubyracer'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
