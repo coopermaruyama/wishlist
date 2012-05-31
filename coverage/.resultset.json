@@ -1,0 +1,42 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/farhankhalaf/Sites/wishlist/app/controllers/application_controller.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/farhankhalaf/Sites/wishlist/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/farhankhalaf/Sites/wishlist/app/helpers/home_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/farhankhalaf/Sites/wishlist/app/helpers/home_controller_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/farhankhalaf/Sites/wishlist/app/controllers/home_controller.rb": [
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null
+      ],
+      "/Users/farhankhalaf/Sites/wishlist/app/controllers/home_controller_controller.rb": [
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1338443283
+  }
+}
