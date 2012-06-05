@@ -9,3 +9,11 @@ html, body {
 body {
 	background-image: image-url('bg.png');
 }
+
+header {
+	width: 1001px;
+	height: 116px;
+	margin: 0 auto;
+	background-image: image-url('header-bg.png');
+	background-repeat: no-repeat;
+}
