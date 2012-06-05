@@ -1,13 +1,13 @@
 #browse-all
 %header
-	= link_to image_tag('logo.png'), home_path
-	%img#facebook{:src => image_path('sharewishes.png')}
+	= link_to image_tag('logo.png', :class => "logo"), home_path
 	.social
 		.icon
 			#twitter= link_to image_tag('twitter.png'), "#"
 		.icon
 			#facebook= link_to image_tag('facebook.png'), "#"
 .wrapper
+	%img#sharewishes{:src => image_path('sharewishes.png')}
 	.wishlist
 		#header
 			%select#wishlist-type{:type => "list"}

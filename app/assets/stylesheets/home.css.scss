@@ -12,20 +12,29 @@ body {
 }
 
 header {
-	width: 941px;
-	height: 56px;
-	margin: 0 auto;
-	background-image: image-url('header-bg.png');
-	background-repeat: no-repeat;
-	padding: 30px 30px;
+	width: 100%;
+	height: 50px;
+	@include linear-gradient(#353535, #000000);
+	box-shadow: 0px 2px 1px rgba(0,0,0,.5);
+	
+	.logo {
+		margin-left: 10px;
+		margin-top: 5px;
+	}
+	
 	#facebook {
 		margin-left: 35px;
 		margin-top: 5px;
 	}
 }
 
+img#sharewishes {
+	margin: 20px 40px;
+}
 .social {
 	float: right;
+	margin-right: 6px;
+	margin-top: 5px;
 	width: 90px;
 	height: 41px;
 	.icon {
@@ -50,7 +59,7 @@ header {
 	background-repeat: no-repeat;
 	position: absolute;
 	right: -2px;
-	top: 150px;
+	top: 70px;
 	width: 110px;
 	height: 45px;
 }
@@ -67,7 +76,6 @@ header {
 	background-color: white;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 50px;
 	box-shadow: 0px 1px 2px rgba(0,0,0,.7);
 	border-radius: 8px;
 	overflow: hidden;
