@@ -1,6 +1,6 @@
 Wishlist::Application.routes.draw do
 
-  root to: 'home#index'
+  root to: 'home#index', :as => :home
   get '/about', to: 'home#about'
 
 
