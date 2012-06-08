@@ -1,6 +1,12 @@
 Wishlist::Application.routes.draw do
 
-  root to: 'home#index', :as => :home
+  devise_for :user do
+    match 'sign_in', to: 'devise/sessions#new'
+    match 'sign_out', to: 'devise/sessions#destroy'
+    match 'sign_up', to: 'devise/registrations#new'
+  end
+
+  root to: 'home#index'
   get '/about', to: 'home#about'
 
 
