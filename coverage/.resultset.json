@@ -1,6 +1,19 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/farhankhalaf/Sites/wishlist/app/models/user.rb": [
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null
+      ],
       "/Users/farhankhalaf/Sites/wishlist/app/controllers/application_controller.rb": [
         1,
         1,
@@ -24,6 +37,6 @@
         null
       ]
     },
-    "timestamp": 1338446477
+    "timestamp": 1339118404
   }
 }

@@ -6,7 +6,8 @@ Feature: Sign up
   Scenario: User signs up with valid data
     Given I am not logged in
     When I go to the sign up page
-    And I fill in "Name" with "John"
+    And I fill in "First name" with "John"
+    And I fill in "Last name" with "Smith"
     And I fill in "Email" with "JohnSmith@gmail.com"
     And I fill in "Password" with "foobar"
     And I fill in "Password confirmation" with "foobar"

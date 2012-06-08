@@ -3,5 +3,5 @@ Given /^I am not logged in$/ do
 end
 
 Then /^I should be signed in$/ do
-  visit(signed_in_users_path)
+  visit(root_path)
 end
