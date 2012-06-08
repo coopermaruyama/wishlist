@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :brand, :description, :name, :price
+  attr_accessible :brand, :description, :name, :price, :hero_img_url
 
   PRICE_REGEX = /[0-9]+\.[0-9]{2}/
 

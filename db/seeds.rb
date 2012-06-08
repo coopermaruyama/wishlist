@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+#
+
+require 'factory_girl'
+require_relative '../spec/factories/factories.rb'
+
+(1..20).each {FactoryGirl.create(:user)}
+
+(1..50).each do |i|
+  price = "#{i}9.99"
+  FactoryGirl.create(:product, price: price)
+end
