@@ -48,3 +48,21 @@ $useIEFilters: 0;
 .clr {
 	clear: both;
 }
+p.notice {
+	color: #244903
+}
+
+.notification {
+	padding: 10px;
+	opacity: .8;
+	margin-left: 43%;
+	background-color: #afeb79;
+	text-align: center;
+	display:inline-block;
+	border-radius: 4px;
+	border: 1px solid #73b33b;
+}
+.notification p {
+	margin: 0;
+	font-family: 'Lucida Sans', 'Lucida Grande';
+}
