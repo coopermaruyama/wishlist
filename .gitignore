@@ -43,6 +43,9 @@ various artifacts
 #/spec/routing
 #/spec/views
 /specifications
+/coverage
+coverage/
+
 
 # scm revert files
 **.orig
