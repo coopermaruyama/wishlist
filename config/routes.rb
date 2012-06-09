@@ -8,8 +8,9 @@ Wishlist::Application.routes.draw do
 
   root to: 'home#index'
   get '/about', to: 'home#about'
-
-
+  scope "api" do
+    resources :products
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

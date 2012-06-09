@@ -8,6 +8,7 @@ gem 'thin'
 gem 'jquery-rails' # Let's consider using google CDN
 gem 'haml'
 gem 'therubyracer'
+gem 'backbone-on-rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
