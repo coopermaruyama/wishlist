@@ -8,6 +8,7 @@ gem 'thin'
 gem 'jquery-rails' # Let's consider using google CDN
 gem 'haml'
 gem 'therubyracer'
+gem 'backbone-on-rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -57,6 +58,8 @@ group :test, :development do
   gem 'debugger'
   gem 'rspec-rails'
   gem 'factory_girl' # used to load factories in db/seeds
+  gem 'guard-jasmine'
+  gem 'jasminerice'
 end
 
 group :development do
