@@ -4,17 +4,15 @@ describe Product do
 
   before(:each) {@product = Factory(:product)}
 
-  describe 'should create an instance given valid attributes' do
-
-    Product.create!(Factory.attributes_for(:product))
-
-  end
+  specify {@product.should be_valid}
 
   describe 'validations' do
 
     it {should validate_presence_of(:name)}
 
     it {should validate_presence_of(:price)}
+
+    it {should validate_presence_of(:source)}
 
     it {should ensure_length_of(:name).is_at_least(2).is_at_most(80)}
 

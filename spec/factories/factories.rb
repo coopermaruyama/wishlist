@@ -16,6 +16,7 @@ FactoryGirl.define do
     description  {Faker::Lorem.paragraphs(3).join(' ')}
     brand        {Faker::Lorem.words(1).join(' ')}
     hero_img_url 'http://www.coffeemakersetc.com/images/bunn-bx-b.jpg'
+    source       'internal'
   end
 
 end
