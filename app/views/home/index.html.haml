@@ -10,11 +10,10 @@
 		.clr
 		.row
 			.bullet
-				%img.star{:src => image_path('star.png')}
-			.field
-				%input{:type => "text", :placeholder => "start adding to your wishlist..."}
+				%img.start{:src => image_path('star.png')}
+			.field#search-container
 		.clr
-			#container
+		%ul#product-list
 
 
 	%img.save-button{:src => image_path('button-save.png')}

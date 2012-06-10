@@ -58,6 +58,8 @@ group :test, :development do
   gem 'debugger'
   gem 'rspec-rails'
   gem 'factory_girl' # used to load factories in db/seeds
+  gem 'guard-jasmine'
+  gem 'jasminerice'
 end
 
 group :development do
