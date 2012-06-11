@@ -6,7 +6,7 @@ class Wishlist.Views.ProductsIndex extends Backbone.View
   template: JST['products/index']#define template location
  
   initialize: ->
-    @collection.on('reset', @render, this)#callback
+    @collection.on('reset', @render, this)#initalize search box on page load
 
   render: ->
     $(@el).html(@template(products: @collection))
@@ -24,13 +24,13 @@ class Wishlist.Views.ProductsIndex extends Backbone.View
       view = new Wishlist.Views.Product({model: product})
       $('#product-list').append(view.render().el)
     
-class Wishlist.Views.Product extends Backbone.View
+class Wishlist.Views.Product extends Backbone.View#single item view
   template: JST['products/product']
   events: {}
   
     
-  render: (data) ->#needs o MODEL passed 
-    window.product = @model
+  render: (data) ->#needs a MODEL passed to it!
+    window.product = @model#make product variable available on global scope
     $(@el).html(@template)
     this
 
