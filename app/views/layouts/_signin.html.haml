@@ -1,0 +1,16 @@
+.sign-in
+	%span#signin-container= link_to 'Sign In', sign_in_path, :id => 'sign-in'
+	%fieldset#signin_menu
+		%form#signin{:method => "post", :action => "/user/sign_in"}
+			%label{:for => "username"}
+				= 'Username or email'
+			%input#username{:tabindex => "4", :type => "text", :name => 'user[email]'}
+			%p
+			%label= "Password"
+			%input#password{:tabindex => "5", :type => "password", :name => 'user[password]'}
+			%p.remember
+				%input#signin_submit{:value => "Sign in", :tabindex => '6', :type => 'submit'}
+				%input#remember{:name => 'remember-me', :value => '1', :tabindex => '7', :type => 'checkbox'}
+				%label{:for => 'remember'}= 'Remember me'
+			%p.forgot= link_to 'Forgot your password?', '#', :id => 'resend_password_link'
+			%p.forgot-username= link_to 'Forgot your username?', '#', :id => 'forgot_username_link'

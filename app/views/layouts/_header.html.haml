@@ -1,7 +1,9 @@
 %header
 	= link_to image_tag('logo.png', :class => "logo"), root_path
-	.social
-		.icon
-			#twitter= link_to image_tag('twitter.png'), "#"
-		.icon
-			#facebook= link_to image_tag('facebook.png'), "#"
+	.right
+		= render :partial => "/layouts/signin"
+		.social
+			.icon
+				#twitter= link_to image_tag('twitter.png'), "#"
+			.icon
+				#facebook= link_to image_tag('facebook.png'), "#"
