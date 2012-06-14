@@ -14,9 +14,9 @@ class Wishlist.Views.ProductsIndex extends Backbone.View
 
   search: (e) ->#fires on keyup
     letters = $('input.input-search').val()#grab letters from input
-    if letters.match(/[^a-zA-Z0-9 ]/g) isnt null
-      letters = letters.replace(/[^a-zA-Z0-9 ]/g, '')
-      $('.input-search').val(letters)
+    if letters.match(/[^a-zA-Z0-9 ]/g) isnt null#find non alphanumerics
+      letters = letters.replace(/[^a-zA-Z0-9 ]/g, '')##remove non alphanumerics
+      $('.input-search').val(letters)#change input box's value to cleaned value
     if letters isnt '' 
       @renderList(@collection.search(letters))#search for models matching input value
       #above passes array of objects that are matched using search method on collection
