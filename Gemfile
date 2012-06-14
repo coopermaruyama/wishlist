@@ -10,12 +10,6 @@ gem 'haml'
 gem 'therubyracer'
 gem 'backbone-on-rails'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'sqlite3'
-
-
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -51,6 +45,7 @@ group :test, :development do
   gem 'factory_girl' # used to load factories in db/seeds
   gem 'guard-jasmine'
   gem 'jasminerice'
+  gem 'sqlite3'
 end
 
 group :development do
