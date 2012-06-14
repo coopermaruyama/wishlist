@@ -9,6 +9,8 @@ gem 'jquery-rails' # Let's consider using google CDN
 gem 'haml'
 gem 'therubyracer'
 gem 'backbone-on-rails'
+gem 'factory_girl' # used to load factories in db/seeds
+gem 'faker'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -42,7 +44,6 @@ end
 group :test, :development do
   gem 'debugger'
   gem 'rspec-rails'
-  gem 'factory_girl' # used to load factories in db/seeds
   gem 'guard-jasmine'
   gem 'jasminerice'
   gem 'sqlite3'
@@ -50,7 +51,6 @@ end
 
 group :development do
   gem 'haml-rails'
-  gem 'faker'
 end
 
 group :production do
