@@ -9,6 +9,7 @@ gem 'jquery-rails' # Let's consider using google CDN
 gem 'haml'
 gem 'therubyracer'
 gem 'backbone-on-rails'
+gem 'sqlite3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -63,7 +64,6 @@ group :test, :development do
 end
 
 group :development do
-  gem 'sqlite3'
   gem 'haml-rails'
   gem 'faker'
 end
