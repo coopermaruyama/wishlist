@@ -9,7 +9,6 @@ gem 'jquery-rails' # Let's consider using google CDN
 gem 'haml'
 gem 'therubyracer'
 gem 'backbone-on-rails'
-gem 'sqlite3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -17,15 +16,6 @@ gem 'sqlite3'
 gem 'sqlite3'
 
 
-# Gems used only for assets and not required
-# in production environments by default.
-#     gem "coffee-rails
-#       gem "uglifier
-#         gem "less"
-#           gem "less-rails-bootstrap"
-#             # Asset sync for production to offload asset loading to s3
-#               gem "asset_sync"
-#               end"
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
