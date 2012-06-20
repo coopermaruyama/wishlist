@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/farhankhalaf/Sites/wishlist/app/models/user.rb": [
+      "/Users/cooper/code/wishlist/app/models/user.rb": [
         1,
         null,
         null,
@@ -17,20 +17,24 @@
         1,
         null
       ],
-      "/Users/farhankhalaf/Sites/wishlist/app/controllers/application_controller.rb": [
+      "/Users/cooper/code/wishlist/app/controllers/application_controller.rb": [
         1,
         1,
         null
       ],
-      "/Users/farhankhalaf/Sites/wishlist/app/helpers/application_helper.rb": [
+      "/Users/cooper/code/wishlist/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/farhankhalaf/Sites/wishlist/app/helpers/home_helper.rb": [
+      "/Users/cooper/code/wishlist/app/helpers/home_helper.rb": [
         1,
         null
       ],
-      "/Users/farhankhalaf/Sites/wishlist/app/controllers/home_controller.rb": [
+      "/Users/cooper/code/wishlist/app/helpers/products_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/cooper/code/wishlist/app/controllers/home_controller.rb": [
         1,
         1,
         null,
@@ -39,7 +43,32 @@
         null,
         null
       ],
-      "/Users/farhankhalaf/Sites/wishlist/app/models/product.rb": [
+      "/Users/cooper/code/wishlist/app/controllers/products_controller.rb": [
+        1,
+        1,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null
+      ],
+      "/Users/cooper/code/wishlist/app/models/product.rb": [
         1,
         1,
         null,
@@ -51,6 +80,6 @@
         null
       ]
     },
-    "timestamp": 1339197643
+    "timestamp": 1339929025
   }
 }

@@ -6,6 +6,7 @@ gem 'cancan'
 gem 'heroku'
 gem 'thin'
 gem 'jquery-rails' # Let's consider using google CDN
+gem 'jquery-ui-rails'
 gem 'haml'
 gem 'therubyracer'
 gem 'backbone-on-rails'
