@@ -1,8 +1,13 @@
-<div class="product">
 	<p class="product-title"><%= product.get('name') %></p>
 	<div class="product-image">
 		<img src="<%= product.get('hero_img_url') %>">
 	</div>
+	<div class="description-container" style="display:none;">
+		<img src="/assets/back.png" id="back-button"/>
+		<p class="description"><%= product.get('description') %></p>
+		<img src="/assets/add.png" id="add-button"/>
+	</div>
 	<span class="price"><%= product.get('price') %></span>
 	<span class="rating"><%= product.get('rating') %></span>
-</div>
+	
+	<span class="overlay"></span>

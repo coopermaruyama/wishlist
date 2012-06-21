@@ -19,7 +19,6 @@ class Wishlist.Views.ProductsIndex extends Backbone.View
       slide: (event, ui) ->
         $('#amount').val("$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ])
       )
-
     $("#amount").val( '$' + $('#slider-range').slider('values', 0 ) + " - $" + $('#slider-range').slider('values', 1 ) )
     this
 
@@ -46,9 +45,44 @@ class Wishlist.Views.ProductsIndex extends Backbone.View
     
 class Wishlist.Views.Product extends Backbone.View#single item view
   template: JST['products/product']
-  events: {}
+  events: 
+    "hover" : "overlay"
+    "click .overlay" : "grow"
+    "click #back-button" : "back"
+  tagName: 'div'
+  className: 'product'
   
+  overlay: (element) ->
+    $(element.currentTarget).toggleClass('hover') unless $(element.currentTarget).attr('class').match(/full-view/i)#$(element.currentTarget) is uequivalent $(this)
     
+  grow: (element) ->
+      parent = $('#product-list')
+      position = parent.children().index($(element.currentTarget).parent())
+      parent.children().each ->
+        if $(this).index() isnt position
+          $(this).hide()
+        if $(this).index() is position
+          $('.filters').hide()
+          $(this).removeClass('hover')
+          $(this).addClass('full-view')
+          $(this).animate({width: '540px', height: '450px'}, 400)
+          $(this).children('.overlay').remove()
+          $(this).children('.description-container').show()
+          $(this).attr('id', 'open')
+
+        
+  back: (element) ->
+    $elem = $(element.currentTarget).parent().parent()
+    $elem.children('.description-container').hide()
+    $elem.removeClass('full-view')
+    $elem.animate({width: '118px', height: '140px'}, 400)
+    $elem.append('<span class="overlay"></span>')
+    $elem.addClass('hover')
+    $('.filters').show()
+    $elem.parent().children().each ->
+      $(this).fadeIn()
+
+
   render: (data) ->#needs a MODEL passed to it!
     window.product = @model#make product variable available on global scope
     $(@el).html(@template)
