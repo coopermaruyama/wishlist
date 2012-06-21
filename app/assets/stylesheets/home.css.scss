@@ -90,7 +90,18 @@ img#sharewishes {
 		width: 100%;
 		height: 560px;
 	}
-	
+	.overlay {
+		@include linear-gradient(white, black);
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		opacity: .03;
+	}
+	.product.hover {
+		box-shadow: 0px 0px 10px #409dc8;
+	}
 	.product {
 		width: 118px;
 		height: 140px;
@@ -133,7 +144,45 @@ img#sharewishes {
 		}
 		
 	}
-	
+
+	.product.full-view {
+//		width: 560px;
+//		height: 460px;
+		padding: 0px 20px 20px 20px;
+		border: none;
+		.overlay {
+			background: none;
+		}
+		
+		p.product-title {
+			font-size: 24px;
+			font-weight: bold;
+		}
+		
+		span.price {
+			font-size: 18px;
+		}
+		
+		img#add-button {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+		}
+		img#back-button {
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+		
+		.product-image {
+			text-align: left;
+			
+			img {
+				max-width: 200px;
+				max-height: 250px;
+			}
+		}
+	}
 }
 
 #wishlist-type {
