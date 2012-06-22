@@ -249,6 +249,12 @@ margin-left: 10px;
 	background: image-url('handle.png') no-repeat 0px -4px;
 	border: none;
 }
+#slider-range .ui-state-focus, #slider-range .ui-state-hover {
+	border: none;
+	box-shadow: none;
+	color: transparent;
+	outline-width: 0px;
+}
 
 #amount {
 	border: none;
