@@ -40,8 +40,11 @@ class Wishlist.Views.ProductsIndex extends Backbone.View
       low = $('#slider-range').slider('values', 0)
       high = $('#slider-range').slider('values', 1)
       if product.get('price') >= low and product.get('price') <= high
+        searched = $('.input-search').val()
+        name = product.get('name')
+        bold = name.replace(searched, '<span style="font-weight:bold;color:black;">' + searched + '</span>')
         $('#product-list').append(view.render().el)
-
+        $('#product-list').children().last().children('.product-title').html(bold)
     
 class Wishlist.Views.Product extends Backbone.View#single item view
   template: JST['products/product']
@@ -65,7 +68,7 @@ class Wishlist.Views.Product extends Backbone.View#single item view
           $('.filters').hide()
           $(this).removeClass('hover')
           $(this).addClass('full-view')
-          $(this).animate({width: '540px', height: '450px'}, 400)
+          $(this).animate({width: '540px', height: '492px'}, 400)
           $(this).children('.overlay').remove()
           $(this).children('.description-container').show()
           $(this).attr('id', 'open')
