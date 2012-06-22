@@ -83,6 +83,10 @@ img#sharewishes {
 			padding-left: 10px;
 			
 		}
+		input[type="text"]:focus {
+			box-shadow: 0px 0px 10px #409dc8;
+			border: none;
+		}
 	}
 	
 	#product-list-container {
@@ -161,6 +165,10 @@ img#sharewishes {
 		
 		span.price {
 			font-size: 18px;
+		}
+		
+		p.description {
+			line-height: 1.5em;
 		}
 		
 		img#add-button {
