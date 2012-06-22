@@ -55,14 +55,14 @@ img#sharewishes {
 	.row {
 		width: 670px;
 		height: 62px;
-		border-bottom: 1px solid #e7e7e7;
+//		border-bottom: 1px solid #e7e7e7;
 	}
 	
 	.bullet {
 		width: 32px;
 		height: 32px;
 		float: left;
-		border-right: 1px solid #fccbcb;
+//		border-right: 1px solid #fccbcb;
 		padding: 15px 15px;
 	}
 	
@@ -83,6 +83,10 @@ img#sharewishes {
 			padding-left: 10px;
 			
 		}
+		input[type="text"]:focus {
+			box-shadow: 0px 0px 10px #409dc8;
+			border: none;
+		}
 	}
 	
 	#product-list-container {
@@ -90,7 +94,18 @@ img#sharewishes {
 		width: 100%;
 		height: 560px;
 	}
-	
+	.overlay {
+		@include linear-gradient(white, black);
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		opacity: .03;
+	}
+	.product.hover {
+		box-shadow: 0px 0px 10px #409dc8;
+	}
 	.product {
 		width: 118px;
 		height: 140px;
@@ -133,7 +148,49 @@ img#sharewishes {
 		}
 		
 	}
-	
+
+	.product.full-view {
+//		width: 560px;
+//		height: 460px;
+		padding: 0px 20px 20px 20px;
+		border: none;
+		.overlay {
+			background: none;
+		}
+		
+		p.product-title {
+			font-size: 24px;
+			font-weight: bold;
+		}
+		
+		span.price {
+			font-size: 18px;
+		}
+		
+		p.description {
+			line-height: 1.5em;
+		}
+		
+		img#add-button {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+		}
+		img#back-button {
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+		
+		.product-image {
+			text-align: left;
+			
+			img {
+				max-width: 200px;
+				max-height: 250px;
+			}
+		}
+	}
 }
 
 #wishlist-type {
@@ -154,3 +211,57 @@ img#sharewishes {
 	float: right;
 	margin-top: 10px;
 }
+//Filters
+.filters {
+	padding: 5px 100px;
+	font: normal normal 12px/1.5em 'Lucida Grande', 'Lucia Sans Unicode', 'Lucida Sans', sans-serif;
+	color: #5b5b5b;
+	width: 185px;
+	height: 13px;
+	
+	#slider-range {
+		float: left;
+		margin-top: 6px;
+	}
+	
+	#pricelabel {
+		float: left;
+	}
+}
+
+//Range Slider
+#demo-frame > div.demo { padding: 10px !important; };
+
+.ui-slider-horizontal {
+height: 7px;
+border: none;
+background: image-url('track.png') repeat-x;
+width: 80px;
+margin-left: 10px;
+}
+
+.ui-slider-range {
+	background: image-url('slider_overlay.png') repeat-x;
+}
+#slider-range .ui-slider-handle {
+	width: 20px;
+	height: 21px;
+	background: image-url('handle.png') no-repeat 0px -4px;
+	border: none;
+}
+#slider-range .ui-state-focus, #slider-range .ui-state-hover {
+	border: none;
+	box-shadow: none;
+	color: transparent;
+	outline-width: 0px;
+}
+
+#amount {
+	border: none;
+	width: 60px;
+	float: right;
+	color: #CCC;
+	font-size: 9px;
+	height: 9px;
+	padding-top: 4px;
+	}

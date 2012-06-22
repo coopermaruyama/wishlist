@@ -27,3 +27,4 @@ $(document).ready ->
 		if val.match(/[^a-zA-Z0-9 ]/g) isnt null
 			new_val = val.replace(/[^a-zA-Z0-9 ]/g, '')
 			$('.input-search').val(new_val)
+			
