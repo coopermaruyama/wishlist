@@ -1,0 +1,10 @@
+require 'spec_helper'
+
+describe List do
+
+  let(:user) {Factory(:user)}
+
+  it 'should create an instance given valid attributes' do
+    user.list.create(Factory.attributes_for(:list))
+  end
+end

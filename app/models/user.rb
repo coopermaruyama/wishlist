@@ -11,4 +11,6 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true, length: {within: 2..25}
   validates :last_name, presence: true, length: {within: 2..30}
+
+  has_one :list
 end

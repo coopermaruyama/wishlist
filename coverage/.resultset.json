@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/cooper/code/wishlist/app/models/user.rb": [
+      "/Users/farhankhalaf/Sites/wishlist/app/models/user.rb": [
         1,
         null,
         null,
@@ -13,28 +13,30 @@
         1,
         null,
         null,
+        1,
+        1,
+        null,
+        1,
+        null
+      ],
+      "/Users/farhankhalaf/Sites/wishlist/app/controllers/application_controller.rb": [
         1,
         1,
         null
       ],
-      "/Users/cooper/code/wishlist/app/controllers/application_controller.rb": [
-        1,
-        1,
-        null
-      ],
-      "/Users/cooper/code/wishlist/app/helpers/application_helper.rb": [
+      "/Users/farhankhalaf/Sites/wishlist/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/cooper/code/wishlist/app/helpers/home_helper.rb": [
+      "/Users/farhankhalaf/Sites/wishlist/app/helpers/home_helper.rb": [
         1,
         null
       ],
-      "/Users/cooper/code/wishlist/app/helpers/products_helper.rb": [
+      "/Users/farhankhalaf/Sites/wishlist/app/helpers/products_helper.rb": [
         1,
         null
       ],
-      "/Users/cooper/code/wishlist/app/controllers/home_controller.rb": [
+      "/Users/farhankhalaf/Sites/wishlist/app/controllers/home_controller.rb": [
         1,
         1,
         null,
@@ -43,7 +45,7 @@
         null,
         null
       ],
-      "/Users/cooper/code/wishlist/app/controllers/products_controller.rb": [
+      "/Users/farhankhalaf/Sites/wishlist/app/controllers/products_controller.rb": [
         1,
         1,
         null,
@@ -68,18 +70,24 @@
         null,
         null
       ],
-      "/Users/cooper/code/wishlist/app/models/product.rb": [
+      "/Users/farhankhalaf/Sites/wishlist/app/models/product.rb": [
         1,
         1,
         null,
         1,
         null,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/farhankhalaf/Sites/wishlist/app/models/list.rb": [
         1,
         1,
         1,
         null
       ]
     },
-    "timestamp": 1339929025
+    "timestamp": 1340834160
   }
 }
