@@ -18,4 +18,8 @@ FactoryGirl.define do
     hero_img_url 'http://www.coffeemakersetc.com/images/bunn-bx-b.jpg'
   end
 
+  factory :list do
+    category :birthday
+  end
+
 end
