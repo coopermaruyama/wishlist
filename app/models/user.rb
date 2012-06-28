@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_me, :provider, :uid
   # attr_accessible :title, :body
 
   validates :first_name, presence: true, length: {within: 2..25}
@@ -17,11 +17,11 @@ class User < ActiveRecord::Base
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
-      user = User.create(name:auth.extra.raw_info.name,
-                        provider:auth.provider,
-                        uid:auth.uid,
-                        email:auth.info.email,
-                        password:Devise.friendly_token[0,20])
+      user = User.create(first_name: auth.extra.raw_info.name,
+                        provider: auth.provider,
+                        uid: auth.uid,
+                        email: auth.info.email,
+                        password: Devise.friendly_token[0,20])
     end
     user
   end
