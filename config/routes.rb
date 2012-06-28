@@ -1,12 +1,16 @@
 Wishlist::Application.routes.draw do
 
+  root to: 'home#index'
   devise_for :user do
     match 'sign_in', to: 'devise/sessions#new'
     match 'sign_out', to: 'devise/sessions#destroy'
     match 'sign_up', to: 'devise/registrations#new'
   end
 
-  root to: 'home#index'
+  match 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/failure', to: redirect('/')
+  match 'signout', to: 'sessions#destroy', as: 'signout'
+
   get '/about', to: 'home#about'
   scope "api" do
     resources :products
