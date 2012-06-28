@@ -6,4 +6,6 @@ class Product < ActiveRecord::Base
   validates :name, presence: true, length: {within: 2..80}
   validates :price, presence: true, format: {with: PRICE_REGEX}, numericality: {greater_than: 0}
   validates :description, length: {maximum: 5000}
+
+  has_many :line_items
 end
