@@ -9,8 +9,8 @@ html, body {
 body {
 	// background-image: image-url('bg.png');
 	// background-repeat: repeat-both;
-	background-color: rgba(0, 0, 0, .03);
-
+	//background-color: rgba(0, 0, 0, .03);
+	@include linear-gradient(white, #eee);
 }
 
 
