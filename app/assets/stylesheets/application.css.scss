@@ -25,6 +25,17 @@ $useIEFilters: 0;
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'WalkwayRounded';
+    src: font-url('walkwayrounded.eot');
+    src: font-url('walkwayrounded.eot?#iefix') format('embedded-opentype'),
+         font-url('walkwayrounded.woff') format('woff'),
+         font-url('walkwayrounded.ttf') format('truetype'),
+         font-url('walkwayrounded.svg#walkwayrounded') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 @mixin linear-gradient($from, $to, $ie: $useIEFilters) {
   @if $ie != 1 { background-color: $to; }
   
@@ -82,10 +93,10 @@ header {
 	}
 
 	#logo {
-		font-family: "Walkway rounded";
+		font-family: "WalkwayRounded";
 		font-size: 50px;
 		text-shadow: 0px -1px 0px rgba(255, 255, 255, .6);
-	
+		letter-spacing: -1px;
 
 		span {
 			padding: 0;
@@ -95,7 +106,7 @@ header {
 			color: #3F5765;
 		}
 		#logo-second {
-			color: white;
+			color: #eee;
 			margin-left: -14px;
 		}
 		#logo-third {
