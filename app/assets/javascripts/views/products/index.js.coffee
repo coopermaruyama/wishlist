@@ -1,13 +1,30 @@
 class Wishlist.Views.ProductsIndex extends Backbone.View
   events:#fire search even on key up
     "keyup input.input-search": "search"
-    "mouseup .ui-slider-handle" : "search"  
+    "mouseup .ui-slider-handle" : "search"
 
   template: JST['products/index']#define template location
  
   initialize: ->
     @collection.on('reset', @render, this)#initalize search box on page load
-    
+    #look for products in cookies
+    @collection.on('reset', @cookieCheck, this)
+
+      #listView = new Wishlist.Views.listItemView
+  cookieCheck: ->
+    key = "products="
+    for c in document.cookie.split(';')
+      c.substring(1, c.length) while c.charAt(0) is ' '
+      products = c.substring(key.length, c.length) if c.indexOf(key) == 0
+    cd = products.split(',')
+    for i in cd when i isnt 'undefined' or ''
+      product = @collection.get(i)
+      view = new Wishlist.Views.listItem({model: product})
+      $('#list-items').append(view.render().el)
+      listheight = ($ '.wishlist').height()
+      rowheight = ($ '.row').height()
+      newheight = rowheight + listheight
+      ($ '.wishlist').height(newheight)
 
   render: ->
     $(@el).html(@template(products: @collection))
@@ -46,18 +63,60 @@ class Wishlist.Views.ProductsIndex extends Backbone.View
         $('#product-list').append(view.render().el)
         $('#product-list').children().last().children('.product-title').html(bold)
     
+
+class Wishlist.Views.listItem extends Backbone.View
+  template: JST['products/listitem']
+  tagName: 'div'
+  render: (data) ->
+    console.log(@model)
+    window.listitem = @model
+    $(@el).html(@template)
+    this
+
+
 class Wishlist.Views.Product extends Backbone.View#single item view
   template: JST['products/product']
   events: 
     "hover" : "overlay"
     "click .overlay" : "grow"
     "click #back-button" : "back"
+    "click #add-button": "addItem"
+
   tagName: 'div'
   className: 'product'
   
   overlay: (element) ->
     $(element.currentTarget).toggleClass('hover') unless $(element.currentTarget).attr('class').match(/full-view/i)#$(element.currentTarget) is uequivalent $(this)
-    
+
+  addItem: (element) ->
+    prodname = @model.get('name')
+    console.log @model
+    html = "<div class='clr'></div><div class='row'><div class='bullet'><img class='start' src='/assets/check.png'></div><div class='field'><img class=\"list-item-image\" src=\"" + @model.get('hero_img_url') + "\"><p class=\"list-item\">&nbsp;" + prodname + "<span class=\"list-item-span\">By " + @model.get('brand') + "</span></p></div></div>"
+    $('#search-container').prepend html
+    listheight = ($ '.wishlist').height()
+    rowheight = ($ '.row').height()
+    newheight = rowheight + listheight
+    ($ '.wishlist').height(newheight)
+    # same as back method #
+    $elem = $(element.currentTarget).parent().parent().parent()
+    $elem.children('.description-container').hide()
+    $elem.removeClass('full-view')
+    $elem.animate({width: '118px', height: '140px'}, 400)
+    $elem.append('<span class="overlay"></span>')
+    $elem.addClass('hover')
+    $('.filters').show()
+    $elem.parent().children().each ->
+      $(this).fadeIn()
+    #add a cookie
+    key = 'products='
+    for c in document.cookie.split(';')
+      c.substring(1, c.length) while c.charAt(0) is ' '
+      products = c.substring(key.length, c.length) if c.indexOf(key) == 0
+    dt = new Date()
+    expiryTime = dt.setTime(dt.getTime()+100*60*60*24*90)
+    document.cookie = 'products=' + products + ',' + @model.get('id') + ';expires=' + dt.toGMTString()
+
+
   grow: (element) ->
       parent = $('#product-list')
       position = parent.children().index($(element.currentTarget).parent())

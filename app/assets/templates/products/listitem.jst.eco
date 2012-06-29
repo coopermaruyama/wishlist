@@ -1,0 +1,15 @@
+<div class='clr'></div>
+<div class='row'>
+	<div class='bullet'>
+		<img class='start' src='/assets/check.png'>
+	</div>
+	<div class='field'>
+		<img class="list-item-image" src=" <%= listitem.get('hero_img_url') %>">
+		<p class="list-item">
+			<%= listitem.get('name') %>
+			<span class="list-item-span">
+				By <%= listitem.get('brand') %>
+			</span>
+		</p>
+	</div>
+</div>

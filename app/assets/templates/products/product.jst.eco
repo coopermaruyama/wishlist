@@ -5,7 +5,7 @@
 	<div class="description-container" style="display:none;">
 		<img src="/assets/back.png" id="back-button"/>
 		<p class="description"><%= product.get('description') %></p>
-		<img src="/assets/add.png" id="add-button"/>
+		<a href="#"><img src="/assets/add.png" id="add-button"/></a>
 	</div>
 	<span class="price"><%= product.get('price') %></span>
 	<span class="rating"><%= product.get('rating') %></span>

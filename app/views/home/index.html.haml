@@ -1,6 +1,9 @@
 #browse-all
 .wrapper
-	%img#sharewishes{:src => image_path('sharewishes.png')}
+	%h1#headline
+		%span#first Share
+		%span#second Your
+		%span#third Wishes
 	.wishlist
 		#header
 			%select#wishlist-type{:type => "list"}
@@ -8,6 +11,7 @@
 				%option christmas wishlist
 				%option wedding wishlist
 		.clr
+		#list-items
 		#search-container
 		#product-list-container
 			%ul#product-list
