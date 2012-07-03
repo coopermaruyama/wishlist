@@ -1,8 +1,6 @@
 %header
 	%a#logo{:href => '/'}
-		%span#logo-first Sho
-		%span#logo-second Mo
-		%span#logo-third Love
+		= link_to image_tag('logo.png', :class => 'logo'), root_path
 	.right
 		= render :partial => "/layouts/signin"
 		.social
