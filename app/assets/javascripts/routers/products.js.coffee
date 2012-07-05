@@ -6,6 +6,7 @@ class Wishlist.Routers.Products extends Backbone.Router
 	initialize: ->
 		@collection = new Wishlist.Collections.Products()
 		@collection.fetch()
+
 		
 	index: ->
 		view = new Wishlist.Views.ProductsIndex(collection: @collection)
