@@ -1,16 +1,24 @@
 Wishlist::Application.routes.draw do
 
+  root to: 'home#index'
+
   devise_for :user do
     match 'sign_in', to: 'devise/sessions#new'
     match 'sign_out', to: 'devise/sessions#destroy'
     match 'sign_up', to: 'devise/registrations#new'
   end
 
-  root to: 'home#index'
-  get '/about', to: 'home#about'
+  resources :user do
+    resource :list do
+      resources :line_item
+    end
+  end
+
   scope "api" do
     resources :products
   end
+
+  get '/about', to: 'home#about'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
