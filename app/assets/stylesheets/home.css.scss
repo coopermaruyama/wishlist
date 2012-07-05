@@ -74,8 +74,8 @@ img#sharewishes {
 	overflow: hidden;
 	#header {
 		width: 668px;
-		height: 55px;
-		@include linear-gradient(#394049, #191c1f);
+		height: 50px;
+		background: image-url('list-header.png') repeat-x;
 		border: 1px solid #191c1f;
 		border-top-left-radius: 8px;
 		border-top-right-radius: 8px;
@@ -248,14 +248,14 @@ img#sharewishes {
 	padding: 5px;
 	font-size: 16px;
 	border: 1px solid rgba(0,0,0,.8);
-	height: 35px;
-	color: $darkblue;
+	height: 32px;
+	color: #ccc;
 	margin-top: 8px;
 	margin-right: 5px;
 	font-weight: bold;
 }
 
-.save-button {
+#save-button {
 	float: right;
 	margin-top: 10px;
 }
