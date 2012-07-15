@@ -27,7 +27,7 @@ img#sharewishes {
     color: black;
     margin: 18px auto;
 	#first {
-		 color: #422720;
+		 color: #d06b27;
 	}
 	#second {
 	color: #CFBD78;
@@ -313,3 +313,36 @@ margin-left: 10px;
 	height: 9px;
 	padding-top: 4px;
 	}
+
+//Save List Container
+#saveList {
+	padding-left: 72px;
+	@include helvetica;
+	p {
+		font-size: 14px;
+		margin: 15px auto 7px auto;
+	}
+	.row {
+		width:150px;
+		display:inline;
+		label {
+			color: #333;
+			font-size: 12px;
+		}
+		.input-field {
+			float:left;
+			margin-right: 20px;
+			input[type=text], input[type=password] {
+				margin-top: 2px;
+				border-radius: 3px;
+				font-family:  Helvetica, sans-serif;
+				font-weight: lighter;
+				border: 1px solid #DDD;
+				box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2);
+				height:18px;
+				font-size:14px;
+			}
+
+		}
+	}
+}
