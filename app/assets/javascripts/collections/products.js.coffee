@@ -14,3 +14,9 @@ class Wishlist.Collections.Products extends Backbone.Collection
 		_(this.filter (data) ->
 			price = data.get('price')
 			price >= low and price <= high)
+
+class Wishlist.Collections.Lists extends Backbone.Collection
+	model: Wishlist.Models.List
+
+class Wishlist.Collections.ListItems extends Wishlist.Collections.Products
+	model: Wishlist.Models.ListItem
