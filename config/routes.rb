@@ -10,7 +10,7 @@ Wishlist::Application.routes.draw do
 
   resources :user do
     resource :list do
-      resources :line_item
+      resources :line_items
     end
   end
 
