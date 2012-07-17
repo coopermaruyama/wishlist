@@ -121,12 +121,12 @@ class Wishlist.Views.saveList extends Backbone.View
       #     console.log data
       #   })
       # console.log list
-      listitems = new Wishlist.Collections.ListItems()
-      listitems.url = '/user/' + userid + '/list/line_item'
+      lineitems = new Wishlist.Collections.LineItems()
+      lineitems.url = '/user/' + userid + '/list/line_items'
       window.wishlist.each (model) ->
-        listitems.add(model)
-      listitems.create()
-      console.log listitems
+        id = model.get('id')
+        lineitems.create({product_id: id})
+      console.log lineitems
       #list.add(model: @model)
       
 
