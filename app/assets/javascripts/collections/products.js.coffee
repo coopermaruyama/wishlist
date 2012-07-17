@@ -18,5 +18,5 @@ class Wishlist.Collections.Products extends Backbone.Collection
 class Wishlist.Collections.Lists extends Backbone.Collection
 	model: Wishlist.Models.List
 
-class Wishlist.Collections.ListItems extends Wishlist.Collections.Products
-	model: Wishlist.Models.ListItem
+class Wishlist.Collections.LineItems extends Backbone.Collection
+	model: Wishlist.Models.LineItem
