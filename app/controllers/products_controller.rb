@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
       OpenStruct.new(
         name: item.get('ItemAttributes/Title'),
         price: item.get('ItemAttributes/ListPrice/Amount').to_i / 100.0,
-        description: item.get('EditorialReviews/EditorialReview/Content'),
+        description: CGI.unescapeHTML(item.get('EditorialReviews/EditorialReview/Content')),
         brand: item.get('ItemAttributes/Manufacturer'),
         hero_img_url: item.get('SmallImage/URL'),
       )

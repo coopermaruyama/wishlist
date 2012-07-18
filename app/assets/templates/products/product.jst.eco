@@ -4,7 +4,7 @@
 	</div>
 	<div class="description-container" style="display:none;">
 		<img src="/assets/back.png" id="back-button"/>
-		<p class="description"><%= product.get('description') %></p>
+		<p class="description"><%- product.get('description') %></p>
 		<a href="#"><img src="/assets/add.png" id="add-button"/></a>
 	</div>
 	<span class="price"><%= product.get('price') %></span>
