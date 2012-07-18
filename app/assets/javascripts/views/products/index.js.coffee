@@ -9,7 +9,7 @@ class Wishlist.Views.ProductsIndex extends Backbone.View
     @containerEl = @options.containerEl
     @render()
     @cookieCheck()
-    @collection.on('reset', @renderSaveButton)
+    @renderSaveButton()
 
   cookieCheck: ->
     key = "products="
@@ -52,7 +52,10 @@ class Wishlist.Views.ProductsIndex extends Backbone.View
       letters = letters.replace(/[^a-zA-Z0-9 ]/g, '')##remove non alphanumerics
       $('.input-search').val(letters)#change input box's value to cleaned value
     if letters isnt '' 
-      @collection.fetch(data: {q: letters}, success: @renderList)
+      clearTimeout(@searchTimeout)
+      @searchTimeout = setTimeout =>
+        @collection.fetch(data: {q: letters}, success: @renderList)
+      , 500
       #@renderList(@collection.search(letters))#search for models matching input value
       #above passes array of objects that are matched using search method on collection
     else $('#product-list').html('')
