@@ -13,6 +13,9 @@ gem 'backbone-on-rails'
 gem 'factory_girl' # used to load factories in db/seeds
 gem 'faker'
 
+gem 'amazon-ecs'
+gem 'figaro'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -62,7 +65,7 @@ end
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
-# gem 'jbuilder'
+gem 'jbuilder'
 
 # Use unicorn as the app server
 # gem 'unicorn'

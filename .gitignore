@@ -65,3 +65,6 @@ coverage/
 # Coffee compiled js
 **.js.js
 
+
+# Ignore application configuration
+/config/application.yml
