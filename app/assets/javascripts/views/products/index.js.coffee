@@ -17,19 +17,21 @@ class Wishlist.Views.ProductsIndex extends Backbone.View
     for c in document.cookie.split(';')
       c.substring(1, c.length) while c.charAt(0) is ' '
       products = c.substring(key.length, c.length) if c.indexOf(key) == 0
-    cd = products.split(',')
+    if products
+      cd = products.split(',')
     window.wishlist = new Wishlist.Collections.Products #initialize wishlist for window
-    for i in cd when i isnt 'undefined' or ''
-      product = @collection.get(i)
-      view = new Wishlist.Views.listItem({model: product})
-      ## share this collection with other views via window list! ##
-      window.wishlist.add(product)
-      ## append to view ##
-      $('#list-items').append(view.render().el)
-      listheight = ($ '.wishlist').height()
-      rowheight = ($ '.row').height()
-      newheight = rowheight + listheight
-      ($ '.wishlist').height(newheight)
+    if cd
+      for i in cd when i isnt 'undefined' or ''
+        product = @collection.get(i)
+        view = new Wishlist.Views.listItem({model: product})
+        ## share this collection with other views via window list! ##
+        window.wishlist.add(product)
+        ## append to view ##
+        $('#list-items').append(view.render().el)
+        listheight = ($ '.wishlist').height()
+        rowheight = ($ '.row').height()
+        newheight = rowheight + listheight
+        ($ '.wishlist').height(newheight)
 
   render: ->
     $(@el).html(@template(products: @collection))
@@ -95,8 +97,37 @@ class Wishlist.Views.saveList extends Backbone.View
     this
 
   saveWishlist: ->
-    window.wishlist.each (model) ->
-      console.log model.get('name')
+    $('#search-container').slideUp()
+    $('#product-list-container').slideUp()
+    ($ '#saveListcontainer').slideDown()
+    user = new Wishlist.Models.CurrentUser()
+    fetch = user.fetch()
+    fetch.complete ->
+      userid = user.get('id')
+      console.log userid
+      if userid is undefined
+        console.log 'userid is undefined!'
+        #TODO undefined reaction
+      else
+        lists = new Wishlist.Collections.Lists()
+        list = new Wishlist.Models.List()
+        list.set({name: 'test', category: 'bdayy'})
+        list.url = '/user/' + userid + '/list'
+        list.save()
+        console.log list
+      # $.ajax({
+      #   url: '/addlist'
+      #   success: ->
+      #     console.log data
+      #   })
+      # console.log list
+      lineitems = new Wishlist.Collections.LineItems()
+      lineitems.url = '/user/' + userid + '/list/line_items'
+      window.wishlist.each (model) ->
+        id = model.get('id')
+        lineitems.create({product_id: id})
+      console.log lineitems
+      #list.add(model: @model)
       
 
 class Wishlist.Views.Product extends Backbone.View#single item view
