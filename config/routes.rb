@@ -10,7 +10,7 @@ Wishlist::Application.routes.draw do
 
   resources :user do
     resource :list do
-      resources :line_item
+      resources :line_items
     end
   end
 
@@ -19,7 +19,7 @@ Wishlist::Application.routes.draw do
   end
 
   get '/about', to: 'home#about'
-
+  get '/currentuser', to: 'home#currentuser'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

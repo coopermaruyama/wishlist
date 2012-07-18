@@ -14,3 +14,5 @@ class Wishlist.Routers.Products extends Backbone.Router
 		
 	show: (id) ->
 		alert "Product #{id}"
+
+	

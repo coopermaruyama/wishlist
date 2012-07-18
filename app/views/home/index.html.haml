@@ -15,5 +15,23 @@
 		#search-container
 		#product-list-container
 			%ul#product-list
+		#saveList
+			%h1 Save Your Wishlist
+			%p Where would you like your items shipped to?
+			%form{:action => "#"}
+				.row
+					.input-field
+						%label{:for => "address"} Address:
+						.clr
+						%input{:type => "text", :name => "address", :size => "35"}
+					.input-field
+						%label{:for => "zip"} ZIP Code:
+						.clr
+						%input{:type => "text", :name => "zip", :size => "10"}
+			.clr
+			%p How would you like to share your list?
+			.row
+				.input-field
+					= image_tag('facebook-logo.png')
 	#saveListContainer
 	

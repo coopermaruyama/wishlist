@@ -1,22 +1,24 @@
 class ListsController < ApplicationController
-
+  respond_to :json
   def index
   end
 
   def show
+    respond_with current_user.list
   end
 
   def new
-    @list = List.new
+    @list = current_user.build_list
   end
 
   def create
     @list = current_user.build_list(params[:list])
-    if @list.save
-      format.json { render json: @list, status: :created }
-    else
-      format.json { render json: @list.errors, status: :unprocessable_entity}
-    end
+    @list.save
+    # if @list.save
+    #   format.json { render json:  @list, status: :created }
+    # else
+    #   format.json { render json: @list.errors, status: :unprocessable_entity}
+    # end
   end
 
   def edit
