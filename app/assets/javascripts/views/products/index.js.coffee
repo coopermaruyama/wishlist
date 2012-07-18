@@ -21,7 +21,7 @@ class Wishlist.Views.ProductsIndex extends Backbone.View
       cd = products.split(',')
     window.wishlist = new Wishlist.Collections.Products #initialize wishlist for window
     if cd
-      for i in cd when i isnt 'undefined' or ''
+      for i in cd when i is not 'undefined' or ''
         product = @collection.get(i)
         view = new Wishlist.Views.listItem({model: product})
         ## share this collection with other views via window list! ##
@@ -80,9 +80,10 @@ class Wishlist.Views.listItem extends Backbone.View
   template: JST['products/listitem']
   tagName: 'div'
   render: (data) ->
-    window.listitem = @model
-    $(@el).html(@template)
-    this
+    if @model is not undefined
+      window.listitem = @model
+      $(@el).html(@template)
+      this
 
 class Wishlist.Views.saveList extends Backbone.View
   template: JST['products/saveList']
