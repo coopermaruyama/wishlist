@@ -1,6 +1,7 @@
 class LineItemsController < ApplicationController
-
+  respond_to :json
   def index
+    respond_with current_user.list.line_items.all
   end
 
   def show
@@ -11,12 +12,13 @@ class LineItemsController < ApplicationController
   end
 
   def create
-    @line_item = current_user.list.line_item.build params[:line_item]
-    if @line_item.save
-      format.json { render json: @list, status: :created }
-    else
-      format.json { render json: @list.errors, status: :unprocessable_entity}
-    end
+    @line_items = current_user.list.line_items.build params[:line_item]
+    @line_items.save
+    # if @line_item.save
+    #   format.json { render json: @list, status: :created }
+    # else
+    #   format.json { render json: @list.errors, status: :unprocessable_entity}
+    # end
   end
 
   def edit
