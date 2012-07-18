@@ -6,11 +6,10 @@ class Wishlist.Views.ProductsIndex extends Backbone.View
   template: JST['products/index']#define template location
  
   initialize: ->
-    @collection.on('reset', @render, this)#initalize search box on page load
-    #look for products in cookies
-    @collection.on('reset', @cookieCheck, this)
-      #listView = new Wishlist.Views.listItemView
-    @collection.on('reset', @renderSaveButton, this)
+    @containerEl = @options.containerEl
+    @render()
+    @cookieCheck()
+    @collection.on('reset', @renderSaveButton)
 
   cookieCheck: ->
     key = "products="
@@ -34,7 +33,8 @@ class Wishlist.Views.ProductsIndex extends Backbone.View
         ($ '.wishlist').height(newheight)
 
   render: ->
-    $(@el).html(@template(products: @collection))
+    $(@el).html(@template())
+    $(@containerEl).html(@el)
     $('#slider-range').slider(#initialize slider!
       range: true
       min: 0
@@ -52,15 +52,16 @@ class Wishlist.Views.ProductsIndex extends Backbone.View
       letters = letters.replace(/[^a-zA-Z0-9 ]/g, '')##remove non alphanumerics
       $('.input-search').val(letters)#change input box's value to cleaned value
     if letters isnt '' 
-      @renderList(@collection.search(letters))#search for models matching input value
+      @collection.fetch(data: {q: letters}, success: @renderList)
+      #@renderList(@collection.search(letters))#search for models matching input value
       #above passes array of objects that are matched using search method on collection
     else $('#product-list').html('')
 
-  renderSaveButton: ->
+  renderSaveButton: =>
     button = new Wishlist.Views.saveList
     button.render()
 
-  renderList: (products) ->#passes in products COLLECTION
+  renderList: (products) =>#passes in products COLLECTION
     $('#product-list').html('')
     
     products.each (product) ->#passes in product MODEL

@@ -14,6 +14,7 @@ gem 'factory_girl' # used to load factories in db/seeds
 gem 'faker'
 
 gem 'amazon-ecs'
+gem 'htmlentities'
 gem 'figaro'
 
 group :assets do

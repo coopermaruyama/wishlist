@@ -2,11 +2,11 @@ class ProductsController < ApplicationController
   respond_to :json
   
   def index
-    @products = Amazon::Ecs.item_search('ruby', response_group: 'Medium').items.map do |item|
+    @products = Amazon::Ecs.item_search(params[:q], response_group: 'Medium').items.map do |item|
       OpenStruct.new(
         name: item.get('ItemAttributes/Title'),
         price: item.get('ItemAttributes/ListPrice/Amount').to_i / 100.0,
-        description: CGI.unescapeHTML(item.get('EditorialReviews/EditorialReview/Content')),
+        description: HTMLEntities.new.decode(item.get('EditorialReviews/EditorialReview/Content')),
         brand: item.get('ItemAttributes/Manufacturer'),
         hero_img_url: item.get('SmallImage/URL'),
       )

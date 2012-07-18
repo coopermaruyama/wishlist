@@ -5,12 +5,9 @@ class Wishlist.Routers.Products extends Backbone.Router
 		
 	initialize: ->
 		@collection = new Wishlist.Collections.Products()
-		@collection.fetch()
-
 		
 	index: ->
-		view = new Wishlist.Views.ProductsIndex(collection: @collection)
-		$('#search-container').html(view.render().el)
+		new Wishlist.Views.ProductsIndex(collection: @collection, containerEl: $('#search-container'))
 		
 	show: (id) ->
 		alert "Product #{id}"
