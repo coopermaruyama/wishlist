@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   def index
     @products = Amazon::Ecs.item_search(params[:q], response_group: 'Medium').items.map do |item|
       OpenStruct.new(
+        id: item.get('ASIN'),
         name: item.get('ItemAttributes/Title'),
         price: item.get('ItemAttributes/ListPrice/Amount').to_i / 100.0,
         description: HTMLEntities.new.decode(item.get('EditorialReviews/EditorialReview/Content')),
