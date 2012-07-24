@@ -1,0 +1,17 @@
+#browse-all
+.wrapper
+	%img#sharewishes{:src => image_path('sharewishes.png')}
+	.wishlist
+		#header
+			%select#wishlist-type{:type => "list"}
+				%option brithday wishlist
+				%option christmas wishlist
+				%option wedding wishlist
+		.clr
+		#search-container
+		#product-list-container
+			%ul#product-list
+
+
+	%img.save-button{:src => image_path('button-save.png')}
+= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
