@@ -12,6 +12,7 @@ gem 'therubyracer'
 gem 'backbone-on-rails'
 gem 'factory_girl' # used to load factories in db/seeds
 gem 'faker'
+gem 'omniauth-facebook'
 
 gem 'amazon-ecs'
 gem 'htmlentities'

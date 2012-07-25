@@ -2,17 +2,20 @@ Wishlist::Application.routes.draw do
 
   root to: 'home#index'
 
-  devise_for :user do
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" } do
     match 'sign_in', to: 'devise/sessions#new'
     match 'sign_out', to: 'devise/sessions#destroy'
     match 'sign_up', to: 'devise/registrations#new'
   end
+
 
   resources :user do
     resource :list do
       resources :line_items
     end
   end
+
+
 
   scope "api" do
     resources :products
