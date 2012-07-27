@@ -10,7 +10,7 @@ window.Wishlist =
 $(document).ready ->
 	Wishlist.init()
 	# ($ '#sign-in').click (e)->#toggle signin form when signin is clicked
-	# 	e.preventDefault()
+# 	e.preventDefault()
 	# 	($ 'fieldset#signin_menu').toggle()
 	# 	($ '#signin-container').toggleClass('menu-open')
 
