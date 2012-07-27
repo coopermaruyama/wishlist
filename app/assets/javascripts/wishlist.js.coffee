@@ -9,10 +9,10 @@ window.Wishlist =
 
 $(document).ready ->
 	Wishlist.init()
-	($ '#sign-in').click (e)->#toggle signin form when signin is clicked
-		e.preventDefault()
-		($ 'fieldset#signin_menu').toggle()
-		($ '#signin-container').toggleClass('menu-open')
+	# ($ '#sign-in').click (e)->#toggle signin form when signin is clicked
+	# 	e.preventDefault()
+	# 	($ 'fieldset#signin_menu').toggle()
+	# 	($ '#signin-container').toggleClass('menu-open')
 
 	($ 'fieldset#signin_menu').mouseup ->#avoid closing when clicking the signin box itself
 		return false
@@ -27,3 +27,6 @@ $(document).ready ->
 		if val.match(/[^a-zA-Z0-9 ]/g) isnt null
 			new_val = val.replace(/[^a-zA-Z0-9 ]/g, '')
 			$('.input-search').val(new_val)
+
+	window.signupUser = ->
+		$('#lightBox').show()

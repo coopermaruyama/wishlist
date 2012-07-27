@@ -1,4 +1,3 @@
-#browse-all
 .wrapper
 	%h1#headline
 		%span#first Share
@@ -7,9 +6,17 @@
 	.wishlist
 		#header
 			%select#wishlist-type{:type => "list"}
-				%option brithday wishlist
-				%option christmas wishlist
-				%option wedding wishlist
+				%option Birthday Wishlist
+				%option Christmas Wishlist
+				%option Wedding Wishlist
+				%option General Wishlist
+				%option Baby Wishlist
+				%option Organization/Non-Profit
+				%option Hannukah Wishlist
+				%option Graduation Wishlist
+				%option Valentine's Day
+				%options Father's Day
+				%option Mother's Day
 		.clr
 		#list-items
 		#search-container
@@ -35,4 +42,3 @@
 					= image_tag('facebook-logo.png')
 	#saveListContainer
 		%img.save-button{:src => image_path('button-save.png')}
-	= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
