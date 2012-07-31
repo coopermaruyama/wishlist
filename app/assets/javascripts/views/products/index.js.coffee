@@ -110,7 +110,7 @@ class Wishlist.Views.saveList extends Backbone.View
       if userid is undefined
         console.log 'userid is undefined!'
         #TODO undefined reaction
-        window.signupUser()
+        
       else
         lists = new Wishlist.Collections.Lists()
         list = new Wishlist.Models.List()
@@ -118,12 +118,14 @@ class Wishlist.Views.saveList extends Backbone.View
         list.url = '/user/' + userid + '/list'
         list.save()
         console.log list
-      lineitems = new Wishlist.Collections.LineItems()
-      lineitems.url = '/user/' + userid + '/list/line_items'
-      window.wishlist.each (model) ->
-        id = model.get('id')
-        lineitems.create({product_id: id})
-      console.log lineitems
+        lineitems = new Wishlist.Collections.LineItems()
+        lineitems.url = '/user/' + userid + '/list/line_items'
+        window.wishlist.each (model) ->
+          id = model.get('id')
+          lineitems.create({product_id: id})
+        window.location.replace('/savelist/')
+        console.log lineitems
+
       #list.add(model: @model)
 
 class Wishlist.Views.Product extends Backbone.View#single item view

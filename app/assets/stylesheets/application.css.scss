@@ -13,7 +13,7 @@
  *= require_tree .
 */
 $useIEFilters: 0; 
-
+html {height: 100%;width: 100%;}
 @font-face {
     font-family: 'WalkwayRounded';
     src: font-url('walkwayrounded.eot');
@@ -78,6 +78,11 @@ body {
 	margin: 0;
 	width: 100%;
 	
+}
+
+h1,h2,h3,h4 {
+	font-family:'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+	font-weight: bold;
 }
 
 header {
