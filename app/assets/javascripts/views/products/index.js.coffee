@@ -12,25 +12,20 @@ class Wishlist.Views.ProductsIndex extends Backbone.View
     @renderSaveButton()
 
   cookieCheck: ->
-    key = "products="
-    for c in document.cookie.split(';')
-      c.substring(1, c.length) while c.charAt(0) is ' '
-      products = c.substring(key.length, c.length) if c.indexOf(key) == 0
-    if products
-      cd = products.split(',')
+    ids = $.cookie('products')?.split(',') || []
     window.wishlist = new Wishlist.Collections.Products #initialize wishlist for window
-    if cd
-      for i in cd when i is not 'undefined' or ''
-        product = @collection.get(i)
-        view = new Wishlist.Views.listItem({model: product})
-        ## share this collection with other views via window list! ##
-        window.wishlist.add(product)
-        ## append to view ##
-        $('#list-items').append(view.render().el)
-        listheight = ($ '.wishlist').height()
-        rowheight = ($ '.row').height()
-        newheight = rowheight + listheight
-        ($ '.wishlist').height(newheight)
+    window.wishlist.fetch
+      data: {ids: ids}
+      add: true
+      success: (products) =>
+        products.each (product) =>
+          view = new Wishlist.Views.listItem(model: product)
+          ## append to view ##
+          $('#list-items').append(view.render().el)
+          listheight = ($ '.wishlist').height()
+          rowheight = ($ '.row').height()
+          newheight = rowheight + listheight
+          ($ '.wishlist').height(newheight)
 
   render: ->
     $(@el).html(@template())
@@ -84,10 +79,8 @@ class Wishlist.Views.listItem extends Backbone.View
   template: JST['products/listitem']
   tagName: 'div'
   render: (data) ->
-    if @model is not undefined
-      window.listitem = @model
-      $(@el).html(@template)
-      this
+    $(@el).html(@template(model: @model)) if @model
+    @
 
 class Wishlist.Views.saveList extends Backbone.View
   template: JST['products/saveList']
@@ -162,14 +155,9 @@ class Wishlist.Views.Product extends Backbone.View#single item view
     $elem.parent().children().each ->
       $(this).fadeIn()
     #add a cookie
-    key = 'products='
-    for c in document.cookie.split(';')
-      c.substring(1, c.length) while c.charAt(0) is ' '
-      products = c.substring(key.length, c.length) if c.indexOf(key) == 0
-    dt = new Date()
-    expiryTime = dt.setTime(dt.getTime()+100*60*60*24*90)
-    document.cookie = 'products=' + products + ',' + @model.get('id') + ';expires=' + dt.toGMTString()
-
+    ids = $.cookie('products')?.split(',') || []
+    ids.push(@model.get('id'))
+    $.cookie('products', ids.join(','))
 
   grow: (element) ->
       parent = $('#product-list')
