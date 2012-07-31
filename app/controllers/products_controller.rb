@@ -2,7 +2,13 @@ class ProductsController < ApplicationController
   respond_to :json
   
   def index
-    @products = Amazon::Ecs.item_search(params[:q], response_group: 'Medium').items.map do |item|
+    @result = if params[:ids]
+      Amazon::Ecs.item_lookup(params[:ids].join(','), response_group: 'Medium')
+    elsif params[:q]
+      Amazon::Ecs.item_search(params[:q], response_group: 'Medium', search_index: 'All')
+    end
+
+    @products = @result.items.map do |item|
       OpenStruct.new(
         id: item.get('ASIN'),
         name: item.get('ItemAttributes/Title'),
