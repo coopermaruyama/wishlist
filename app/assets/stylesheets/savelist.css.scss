@@ -1,8 +1,71 @@
 // Place all the styles related to the savelist controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$orange: #ff9c00;
+$chocolate: #6a401f;
+$green: #3f6a1f;
+$darkblue: #67989e;
+$lightblue: lighten($darkblue, 20%);
 
 h1 {
 	color: #333;
 	text-align:center;
+	font-size:44px;
+}
+hr {
+	border: 1px solid #ccc;
+}
+.itemscontainer {
+	background-color:white;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	.edit {
+		margin-right: 10px;
+		margin-top:5px;
+		float:right;
+		a, a:visited {
+			color: $darkblue;
+		}
+		a:hover {
+			color:$lightblue;
+		}
+	}
+}
+.image {
+	float:left;
+	width: 118px;
+	height: 105px;
+	padding:5px;
+	text-align:center;
+	img {
+		max-width: 108px;
+		max-height:95px;
+	}
+	border-bottom: 1px solid #ccc;
+}
+.info {
+	float:right;
+	width:530px;
+	height: 90px;
+	padding:5px;
+	position:relative;
+	line-height: 1.5em;
+	padding-top: 20px;
+	font-size:18px;
+	border-bottom: 1px solid #ccc;
+	.name {
+		font-weight:bold;
+		color: $chocolate;
+	}
+	.brand {
+		color: $orange;
+	}
+	.price {
+		position: absolute;
+		bottom: 25px;
+		right: 25px;
+		color: $green;
+		font-weight:bold;
+		font-size:22px;
+	}
 }

@@ -20,3 +20,13 @@ class Wishlist.Collections.Lists extends Backbone.Collection
 
 class Wishlist.Collections.LineItems extends Backbone.Collection
   model: Wishlist.Models.LineItem
+
+  create_success: (model, result, xhr) ->
+    window.li++
+    console.log li
+    if window.li is window.wishlist.length then window.location.replace('/savelist/')
+
+  create_error: (model, fail, xhr) ->
+    window.li++
+    console.log li
+    if window.li is window.wishlist.length then window.location.replace('/savelist/')

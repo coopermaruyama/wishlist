@@ -94,14 +94,17 @@ class Wishlist.Views.saveList extends Backbone.View
     $(@el).html(@template)
     this
 
+  redirect: ->
+    console.log 'redirect'
+
   saveWishlist: ->
     user = new Wishlist.Models.CurrentUser()
     fetch = user.fetch()
     fetch.complete ->
       userid = user.get('id')
-      console.log userid
       if userid is undefined
         console.log 'userid is undefined!'
+        window.location.replace('/sign_up/')
         #TODO undefined reaction
         
       else
@@ -110,14 +113,14 @@ class Wishlist.Views.saveList extends Backbone.View
         list.set({name: 'test', category: 'bdayy'})
         list.url = '/user/' + userid + '/list'
         list.save()
-        console.log list
         lineitems = new Wishlist.Collections.LineItems()
         lineitems.url = '/user/' + userid + '/list/line_items'
+        window.li = 0
         window.wishlist.each (model) ->
           id = model.get('id')
-          lineitems.create({product_id: id})
-        window.location.replace('/savelist/')
-        console.log lineitems
+          lineitems.create {product_id: id}, {success: lineitems.create_success, error: lineitems.create_error}
+        #window.location.replace('/savelist/')
+        
 
       #list.add(model: @model)
 

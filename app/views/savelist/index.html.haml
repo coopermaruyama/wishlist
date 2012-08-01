@@ -1,2 +1,16 @@
 .wrapper
 	%h1 Review Your Wishlist
+	.itemscontainer
+		-@products.each do |product|
+			.image
+				%img{:src => product.hero_img_url}
+			.info
+				%span.name= product.name
+				%span.brand= product.brand
+				%span.price= "$#{product.price}"
+			.clr
+		%span.edit= link_to "Edit", root_path
+	.clr
+	%h2 Sharing Options
+	.sharing
+		%a{:href=>"#"}= image_tag('fb-share.png')
