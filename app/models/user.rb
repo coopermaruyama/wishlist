@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_me, :provider, :uid
+  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_me, :provider, :uid, :oauth_token, :oauth_expires_at
   # attr_accessible :title, :body
 
   validates :first_name, presence: true, length: {within: 2..25}
@@ -24,7 +24,9 @@ class User < ActiveRecord::Base
                         uid: auth.uid,
                         email: auth.info.email,
                         password: password,
-                        password_confirmation: password)
+                        password_confirmation: password,
+                        oauth_token: auth.credentials.token,
+                        oauth_expires_at: Time.at(auth.credentials.expires_at))
     end
     user
 end
@@ -42,4 +44,9 @@ end
   def password_required?
     super && provider.blank?
   end
+
+  def facebook
+    @facebook ||= Koala::Facebook::API.new(oauth_token)
+  end
+
 end
