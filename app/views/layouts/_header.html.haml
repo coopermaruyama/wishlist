@@ -3,7 +3,13 @@
 		= link_to image_tag('logo.png', :class => 'logo'), root_path
 	.right
 		.sign-in
-			%span#signin-container= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), :id => 'sign-in'
+			-unless user_signed_in?
+				%span#signin-container= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), :id => 'sign-in'
+			-if user_signed_in?
+				%span#signin-container
+					%span#edit= link_to "Sign Out", "/sign_out/"
+
+			
 		.social
 			.icon
 				#twitter= link_to image_tag('twitter.png'), "#"
