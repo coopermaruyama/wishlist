@@ -1,2 +1,20 @@
-%h1 Lists#show
-%p Find me in app/views/lists/show.html.haml
+%head
+	%meta{:property => "fb:app_id", :content => ENV["FACEBOOK_APP_ID"]}
+	%meta{:property => "og:site_name", :content => "ShoMoLove"}
+	%meta{:property => "og:type", :content => "smlwishlist:wishlist"}
+	%meta{:property => "og:title", :content => @list.category}
+	%meta{:property => "og:url", :content => "/lists/#{@list.id}"}
+	%meta{:property => "og:image", :content => @products.first.hero_img_url}
+.wrapper
+	%h1= "#{@user.first_name}'s #{@list.category} Wishlist"
+	.itemscontainer
+		-@products.each do |product|
+			.image
+				%img{:src => product.hero_img_url}
+			.info
+				%span.name= product.name
+				%span.brand= product.brand
+				%span.price= "$#{product.price}"
+			.clr
+	.clr
+	%button#donate= "Donate"
