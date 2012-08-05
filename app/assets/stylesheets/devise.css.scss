@@ -1,0 +1,43 @@
+@import 'application.css.scss';
+
+h2 {
+	text-align: center;
+}
+.wrapper {
+	width: 500px;
+	margin: 0 auto;
+
+}
+form {
+	margin: 0 auto;
+}
+label {
+	color: $chocolate;
+}
+
+input[type=text], input[type=password], input[type=email] {
+	border-radius: 4px;
+	width: 300px;
+	height: 26px;
+	border: 1px solid lighten($chocolate, 60%);
+	margin-bottom: 16px;
+	margin-top: 4px;
+}
+input[type=submit] {
+	@include linear-gradient(lighten($orange, 30%), $orange);
+	border-radius: 13px;
+	width: 100px;
+	height: 29px;
+	border: 1px solid lighten($orange, 10%);
+	box-shadow: 0px 2px 1px rgba(0,0,0,.5);
+	color: white;
+	font-size: 14px;
+	text-shadow: 0px -1px rgba(0,0,0,.3);
+	text-transform: uppercase;
+}
+a:link, a:visited {
+	color: $darkblue;
+}
+a:hover {
+	color: $lightblue;
+}
