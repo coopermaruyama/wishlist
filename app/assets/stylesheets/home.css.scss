@@ -61,6 +61,7 @@ img#sharewishes {
 		max-width: 50px;
 		max-height: 50px;
 		float: left;
+		margin-right:9px;
 	}
 
 .wishlist {
@@ -100,6 +101,8 @@ img#sharewishes {
 		height: 42px;
 		float: right;
 		padding: 10px 10px;
+		overflow-y:hidden;
+		margin-bottom: 10px;
 
 		input[type="text"] {
 			margin-top: 2px;
@@ -125,7 +128,7 @@ img#sharewishes {
 			font-family:'Helvetica Neue', 'Helvetica', sans-serif;
 			font-weight: bold;
 			font-size: 22px;
-			margin-top: 12px;
+			margin-top: 2px;
 		}
 		span.list-item-span {
 			color: #ccc;
