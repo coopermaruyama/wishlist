@@ -14,6 +14,11 @@
 */
 $useIEFilters: 0; 
 html {height: 100%;width: 100%;}
+$orange: #ff9c00;
+$chocolate: #6a401f;
+$green: #3f6a1f;
+$darkblue: #67989e;
+$lightblue: lighten($darkblue, 20%);
 @font-face {
     font-family: 'WalkwayRounded';
     src: font-url('walkwayrounded.eot');
