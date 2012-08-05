@@ -1,3 +1,18 @@
 // Place all the styles related to the Lists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'application.css.scss';
+#donate {
+	@include linear-gradient(lighten($darkgreen, 30%), $darkgreen);
+	border-radius: 13px;
+	width: 100px;
+	height: 29px;
+	border: 1px solid lighten($darkgreen, 10%);
+	box-shadow: 0px 2px 1px rgba(0,0,0,.5);
+	color: white;
+	font-size: 14px;
+	text-shadow: 0px -1px rgba(0,0,0,.3);
+	text-transform: uppercase;
+	float:right;
+	margin-top:10px;
+}
