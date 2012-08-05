@@ -13,4 +13,4 @@
 	.clr
 	%h2 Sharing Options
 	.sharing
-		%a{:href=>"#"}= image_tag('fb-share.png')
+		= link_to image_tag('fb-share.png'), @current_user.facebook.put_connections("me", "smlwishlist:create", :wishlist => "http://samples.ogp.me/502250549791451")
