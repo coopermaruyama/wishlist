@@ -108,7 +108,7 @@ class Wishlist.Views.saveList extends Backbone.View
         #TODO undefined reaction
         
       else
-        lists = new Wishlist.Collections.Lists()
+        #lists = new Wishlist.Collections.Lists()
         list = new Wishlist.Models.List()
         list.set({name: 'test', category: 'bdayy'})
         list.url = '/user/' + userid + '/list'
