@@ -5,6 +5,13 @@
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
+    - if @list_page
+      %meta{:property => "fb:app_id", :content => ENV["FACEBOOK_APP_ID"]}
+      %meta{:property => "og:site_name", :content => "ShoMoLove"}
+      %meta{:property => "og:type", :content => "smlwishlist:wishlist"}
+      %meta{:property => "og:title", :content => @list.category}
+      %meta{:property => "og:url", :content => "http://#{request.host}/lists/#{@list.id}"}
+      %meta{:property => "og:image", :content => @products.first.hero_img_url}
   %body
     = render :partial => "/layouts/header"
     - if notice or alert

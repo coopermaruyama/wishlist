@@ -1,16 +1,15 @@
 class SavelistController < ApplicationController
 	def index
+		@list_page = true
 		@user = current_user
 		@list = @user.list
 		@line_items = @list.line_items
+
 		@ids = Array.new
 		@line_items.each do |item|
 			@ids.push(item.product_id)
 		end
-		
 		@result = Amazon::Ecs.item_lookup(@ids.join(','), response_group: 'Medium')
-
-
 		@products = @result.items.map do |item|
 	      OpenStruct.new(
 	        id: item.get('ASIN'),
@@ -21,6 +20,8 @@ class SavelistController < ApplicationController
 	        hero_img_url: item.get('MediumImage/URL'),
 	      )
 	    end
-		
+		@first = @products.first
+
+		@share_list = User.delay.share_list(current_user.id, "http://#{request.host}/lists/#{@list.id}")
 	end
 end

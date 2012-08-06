@@ -4,6 +4,7 @@ class ListsController < ApplicationController
   end
 
   def show
+    @list_page = true
     @list = List.find(params[:id])
     @user = User.find(@list.user_id)
     @line_items = @list.line_items
