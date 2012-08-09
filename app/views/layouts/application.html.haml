@@ -10,7 +10,7 @@
       %meta{:property => "og:site_name", :content => "ShoMoLove"}
       %meta{:property => "og:type", :content => "smlwishlist:wishlist"}
       %meta{:property => "og:title", :content => @list.category}
-      %meta{:property => "og:url", :content => "http://#{request.host}/lists/#{@list.id}"}
+      %meta{:property => "og:url", :content => "#{request.protocol}#{request.host}/lists/#{@list.id}"}
       %meta{:property => "og:image", :content => @products.first.hero_img_url}
   %body
     = render :partial => "/layouts/header"

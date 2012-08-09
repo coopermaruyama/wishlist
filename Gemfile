@@ -12,7 +12,7 @@ gem 'therubyracer'
 gem 'backbone-on-rails'
 gem 'factory_girl' # used to load factories in db/seeds
 gem 'faker'
-gem 'omniauth-facebook', '~>1.4.0'
+gem 'omniauth-facebook', '1.4.0'
 gem 'koala'
 gem 'delayed_job_active_record'
 
