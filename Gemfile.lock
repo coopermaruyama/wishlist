@@ -314,6 +314,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   debugger
+  delayed_job
   delayed_job_active_record
   devise
   factory_girl

@@ -21,7 +21,7 @@ class SavelistController < ApplicationController
 	      )
 	    end
 		@first = @products.first
-
-		@share_list = User.delay.share_list(current_user.id, "http://#{request.host}/lists/#{@list.id}")
+		##{request.host}
+		@share_list = User.delay.share_list(current_user.id, "http://localhost:3000/lists/#{@list.id}")
 	end
 end
