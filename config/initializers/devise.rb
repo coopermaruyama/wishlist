@@ -215,6 +215,6 @@ Devise.setup do |config|
   # end
   #require "omniauth-facebook"
   config.omniauth :facebook, "488940467789126", "7d0c7d71cf47a52219234182e3962902",
-    {:scope => 'email,publish_actions,publish_stream', :strategy_class => OmniAuth::Strategies::Facebook, 
+    {:scope => 'email,publish_stream,publish_actions', :strategy_class => OmniAuth::Strategies::Facebook, 
       :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
 end

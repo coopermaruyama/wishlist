@@ -21,10 +21,10 @@ class SavelistController < ApplicationController
 	        hero_img_url: item.get('MediumImage/URL'),
 	      )
 	    end
-	     begin
-		@share_list = User.share_list(current_user, "http://#{request.host}/lists/#{@list.id}")
-		 rescue
-		
-		 end
+	    begin
+			@share_list = User.share_list(current_user, "http://#{request.host}/lists/#{@list.id}")
+		rescue
+			Rails.logger.error "Share list error: #{e}"
+		end
 	end
 end
