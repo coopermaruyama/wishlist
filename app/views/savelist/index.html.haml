@@ -3,7 +3,7 @@
 	%meta{:property => "og:site_name", :content => "ShoMoLove"}
 	%meta{:property => "og:type", :content => "smlwishlist:wishlist"}
 	%meta{:property => "og:title", :content => @list.category}
-	%meta{:property => "og:url", :content => "/lists/#{@list.id}"}
+	%meta{:property => "og:url", :content => "http://#{request.host}/lists/#{@list.id}"}
 	%meta{:property => "og:image", :content => @products.first.hero_img_url}
 .wrapper
 	%h1 Review Your Wishlist
@@ -20,4 +20,4 @@
 	.clr
 	%h2 Sharing Options
 	.sharing
-		= link_to image_tag('fb-share.png'), @current_user.facebook.put_connections("me", "smlwishlist:create", :wishlist => "http://shomolove.herokuapp.com/lists/#{@list.id}")
+		= link_to image_tag('fb-share.png'), @share_list
