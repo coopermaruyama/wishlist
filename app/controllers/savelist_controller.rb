@@ -24,7 +24,7 @@ class SavelistController < ApplicationController
 	    begin
 			@share_list = User.share_list(current_user, "http://#{request.host}/lists/#{@list.id}")
 		rescue
-			Rails.logger.error "Share list error: #{e}"
+			#Rails.logger.error "Share list error: #{e}"
 		end
 	end
 end
