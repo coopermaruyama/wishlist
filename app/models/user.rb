@@ -49,4 +49,9 @@ end
     @facebook ||= Koala::Facebook::API.new(oauth_token)
   end
 
+  def self.share_list(user_id, list_url)
+  user = User.find(user_id)
+  user.facebook.put_connections("me", "smlwishlist:create", wishlist: list_url)
+  end
+
 end
