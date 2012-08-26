@@ -8,6 +8,7 @@ window.Wishlist =
 		Backbone.history.start()
 
 $(document).ready ->
+	window.location.hash = ''
 	Wishlist.init()
 	# ($ '#sign-in').click (e)->#toggle signin form when signin is clicked
 # 	e.preventDefault()

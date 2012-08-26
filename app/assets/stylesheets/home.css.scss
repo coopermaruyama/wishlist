@@ -20,18 +20,15 @@ img#sharewishes {
 }
 #headline {
 	text-align: center;
-    font-family: "DearJoe";
-    letter-spacing: -1px;
+    font-family: 'DearJoe';
     font-weight: normal;
-    font-size: 84px;
-    color: black;
+    font-size: 33px;
     margin: 18px auto;
 	#first {
-		 color: #ff9c00;
+		 color: #6a401f;
 	}
 	#second {
-		color: #6a401f;
-	margin-left:-15px;
+		color: #ff9c00;
     //text-shadow: 0px 0px 7px rgba(0,0,0,.6);
 	}
 	#third {
@@ -61,6 +58,7 @@ img#sharewishes {
 		max-width: 50px;
 		max-height: 50px;
 		float: left;
+		margin-right:9px;
 	}
 
 .wishlist {
@@ -100,6 +98,8 @@ img#sharewishes {
 		height: 42px;
 		float: right;
 		padding: 10px 10px;
+		overflow-y:hidden;
+		margin-bottom: 10px;
 
 		input[type="text"] {
 			margin-top: 2px;
@@ -125,7 +125,7 @@ img#sharewishes {
 			font-family:'Helvetica Neue', 'Helvetica', sans-serif;
 			font-weight: bold;
 			font-size: 22px;
-			margin-top: 12px;
+			margin-top: 2px;
 		}
 		span.list-item-span {
 			color: #ccc;

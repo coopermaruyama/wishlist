@@ -12,11 +12,14 @@ gem 'therubyracer'
 gem 'backbone-on-rails'
 gem 'factory_girl' # used to load factories in db/seeds
 gem 'faker'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '1.4.0'
+gem 'koala'
+gem 'delayed_job_active_record'
 
 gem 'amazon-ecs'
 gem 'htmlentities'
 gem 'figaro'
+
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
