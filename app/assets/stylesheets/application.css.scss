@@ -19,6 +19,7 @@ $chocolate: #6a401f;
 $green: #3f6a1f;
 $darkblue: #67989e;
 $lightblue: lighten($darkblue, 20%);
+$darkgreen: #3f6a1f;
 @font-face {
     font-family: 'WalkwayRounded';
     src: font-url('walkwayrounded.eot');
@@ -291,10 +292,10 @@ p.notice {
 .notification {
 	padding: 10px;
 	opacity: .8;
-	margin-left: 43%;
+	margin:0 auto;
 	background-color: #afeb79;
 	text-align: center;
-	display:inline-block;
+	display:block;
 	border-radius: 4px;
 	border: 1px solid #73b33b;
 }
