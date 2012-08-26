@@ -3,7 +3,21 @@
   %head
     %title Wishlist
     = stylesheet_link_tag 'application', media: 'all'
+    / begin IE Compatibility
+    /[if IE]
+      = stylesheet_link_tag 'ie', :media => 'screen'
+    /[if lt IE 9]
+      :javascript
+        document.createElement('header');
+        document.createElement('nav');
+        document.createElement('section');
+        document.createElement('article');
+        document.createElement('aside');
+        document.createElement('footer');
+        document.createElement('hgroup');
+    /end IE
     = javascript_include_tag 'application'
+    = javascript_include_tag 'https://getfirebug.com/firebug-lite.js'
     = csrf_meta_tags
     -if @is_list
       %meta{:property => "fb:app_id", :content => ENV["FACEBOOK_APP_ID"]}
