@@ -1,0 +1,19 @@
+
+
+header {
+	display: block;
+}
+a img {
+	border: none;
+}
+.wishlist {
+	border: 1px solid #ccc;
+	.field input[type=text]:focus {
+		border: 1px solid #5a4226;
+	}
+}
+ul#product-list {
+	span.overlay {
+		background-color: transparent;
+			}
+}
