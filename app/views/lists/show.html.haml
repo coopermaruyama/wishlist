@@ -13,12 +13,12 @@
 	%button#donate= "Donate"
 
 %form{:action => "https://www.paypal.com/cgi-bin/webscr", :method => "post"}
-  %input{:name => "cmd", :type => "hidden", :value => "_donations"}
-  %input{:name => "business", :type => "hidden", :value => "testing@shomolove.com"}
-  %input{:name => "lc", :type => "hidden", :value => "US"}
-  %input{:name => "item_name", :type => "hidden", :value => "Sho Mo Love Wishlist"}
-  %input{:name => "no_note", :type => "hidden", :value => "0"}
-  %input{:name => "currency_code", :type => "hidden", :value => "USD"}
-  %input{:name => "bn", :type => "hidden", :value => "PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest"}
-  %input{:alt => "PayPal - The safer, easier way to pay online!", :border => "0", :name => "submit", :src => "https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif", :type => "image"}
-  %img{:alt => "", :border => "0", :height => "1", :src => "https://www.paypalobjects.com/en_US/i/scr/pixel.gif", :width => "1"}
+	%input{:name => "cmd", :type => "hidden", :value => "_donations"}
+	%input{:name => "business", :type => "hidden", :value => "testing@shomolove.com"}
+	%input{:name => "lc", :type => "hidden", :value => "US"}
+	%input{:name => "item_name", :type => "hidden", :value => "Sho Mo Love Wishlist"}
+	%input{:name => "no_note", :type => "hidden", :value => "0"}
+	%input{:name => "currency_code", :type => "hidden", :value => "USD"}
+	%input{:name => "bn", :type => "hidden", :value => "PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest"}
+	%input{:alt => "PayPal - The safer, easier way to pay online!", :border => "0", :name => "submit", :src => "https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif", :type =>	"image"  }
+	%img{:alt => "", :border => "0", :height => "1", :src => "https://www.paypalobjects.com/en_US/i/scr/pixel.gif", :width => "1"}
