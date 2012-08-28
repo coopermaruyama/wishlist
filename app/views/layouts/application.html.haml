@@ -10,7 +10,6 @@
       %meta{:property => "og:url", :content => "http://#{request.host}/lists/#{@list.id}"}
       %meta{:property => "og:image", :content => @products.first.hero_img_url}
     = stylesheet_link_tag 'application', media: 'all'
-    / begin IE Compatibility
     /[if IE]
       = stylesheet_link_tag 'ie', :media => 'screen'
     /[if lt IE 9]
@@ -22,7 +21,6 @@
         document.createElement('aside');
         document.createElement('footer');
         document.createElement('hgroup');
-    /end IE
     = javascript_include_tag 'application'
     = javascript_include_tag 'https://getfirebug.com/firebug-lite.js'
     = csrf_meta_tags
