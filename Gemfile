@@ -19,7 +19,7 @@ gem 'amazon-ecs'
 gem 'htmlentities'
 gem 'figaro'
 gem 'resque', :require => "resque/server"
-
+gem 'resque-heroku'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
