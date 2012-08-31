@@ -21,10 +21,9 @@ class SavelistController < ApplicationController
 	        hero_img_url: item.get('MediumImage/URL'),
 	      )
 	    end
-	    begin
-			@share_list = User.share_list(current_user, "http://#{request.host}/lists/#{@list.id}")
-		rescue
+	    	@share_link = "http://#{request.host}/lists/#{@list.id}"
+	    	Resque.enqueue(FBShare, @user.id, @share_link)
+			#@share_list = User.delay.share_list(current_user, "http://#{request.host}/lists/#{@list.id}")
 			#Rails.logger.error "Share list error: #{e}"
-		end
 	end
 end
