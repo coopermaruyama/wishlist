@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120828003556) do
+ActiveRecord::Schema.define(:version => 20120831172729) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -40,8 +40,19 @@ ActiveRecord::Schema.define(:version => 20120828003556) do
     t.integer  "user_id"
     t.string   "category"
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                                                :null => false
+    t.datetime "updated_at",                                                :null => false
+    t.decimal  "balance",    :precision => 8, :scale => 2, :default => 0.0
+  end
+
+  create_table "payment_notifications", :force => true do |t|
+    t.text     "params"
+    t.integer  "list_id"
+    t.string   "status"
+    t.string   "transaction_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.decimal  "amount"
   end
 
   create_table "products", :force => true do |t|

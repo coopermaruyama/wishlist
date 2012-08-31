@@ -1,5 +1,7 @@
 Wishlist::Application.routes.draw do
 
+  resources :payment_notifications
+
   root to: 'home#index'
 
 
