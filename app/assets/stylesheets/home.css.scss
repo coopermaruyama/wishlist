@@ -258,6 +258,10 @@ img#sharewishes {
 #save-button {
 	float: right;
 	margin-top: 10px;
+	cursor:pointer;
+}
+#save-button:hover {
+	opacity: 0.9;
 }
 //Filters
 .filters {

@@ -13,7 +13,13 @@
  *= require_tree .
 */
 $useIEFilters: 0; 
-html {height: 100%;width: 100%;}
+html,body {min-height: 100%;width: 100%;}
+body {
+	background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    margin: 0 !important;
+    height: 100% !important;
+}
 $orange: #ff9c00;
 $chocolate: #6a401f;
 $green: #3f6a1f;
