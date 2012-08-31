@@ -56,6 +56,7 @@ group :test, :development do
   gem 'guard-jasmine'
   gem 'jasminerice'
   gem 'sqlite3'
+  gem 'nifty-generators'
 end
 
 group :development do
@@ -81,3 +82,5 @@ gem 'jbuilder'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+
+gem "mocha", :group => :test
