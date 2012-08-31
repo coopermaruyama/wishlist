@@ -18,8 +18,7 @@ gem 'koala'
 gem 'amazon-ecs'
 gem 'htmlentities'
 gem 'figaro'
-gem 'resque', :require => "resque/server"
-
+gem 'resque', "~> 1.22.0", :require => "resque/server"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

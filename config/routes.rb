@@ -29,6 +29,7 @@ Wishlist::Application.routes.draw do
   get '/currentuser', to: 'home#currentuser'
   get '/savelist', to: 'savelist#index'
   match 'lists/:id' => 'lists#show'
+  mount Resque::Server.new, :at => '/resque'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
