@@ -139,6 +139,9 @@ class Wishlist.Views.Product extends Backbone.View#single item view
     $(element.currentTarget).toggleClass('hover') unless $(element.currentTarget).attr('class').match(/full-view/i)#$(element.currentTarget) is uequivalent $(this)
 
   addItem: (element) ->
+    window.wishlist.add(@model)
+    console.log window.wishlist
+    console.log "blah"
     prodname = @model.get('name')
     console.log @model
     html = "<div class='clr'></div><div class='row'><div class='bullet'><img class='start' src='/assets/check.png'></div><div class='field'><img class=\"list-item-image\" src=\"" + @model.get('hero_img_url') + "\"><p class=\"list-item\">&nbsp;" + prodname + "<span class=\"list-item-span\">By " + @model.get('brand') + "</span></p></div></div>"
@@ -161,6 +164,7 @@ class Wishlist.Views.Product extends Backbone.View#single item view
     ids = $.cookie('products')?.split(',') || []
     ids.push(@model.get('id'))
     $.cookie('products', ids.join(','))
+
 
   grow: (element) ->
       parent = $('#product-list')
