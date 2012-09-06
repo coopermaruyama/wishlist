@@ -27,7 +27,7 @@ class ListsController < ApplicationController
         )
       end
 
-    @share_link = Resque.enqueue(FBShare, current_user.id, "#{request.protocol}#{request.host_with_port}#{request.fullpath}")
+    @share_link = Resque.enqueue(FBShare, @user.id, "#{request.protocol}#{request.host_with_port}#{request.fullpath}")
     
   end
 
