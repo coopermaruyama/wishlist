@@ -161,6 +161,8 @@ class Wishlist.Views.Product extends Backbone.View#single item view
     ids = $.cookie('products')?.split(',') || []
     ids.push(@model.get('id'))
     $.cookie('products', ids.join(','))
+    window.wishlist.add(@model)
+    element.preventDefault()
 
   grow: (element) ->
       parent = $('#product-list')
