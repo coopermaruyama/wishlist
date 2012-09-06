@@ -5,9 +5,9 @@ class HomeController < ApplicationController
   	if user_signed_in?
   		@user = current_user
   	end
-    if user_signed_in? and @user.list
-      redirect_to "/lists/#{@user.list.id}"
-    end
+    # if user_signed_in? and @user.list
+    #   redirect_to "/lists/#{@user.list.id}"
+    # end
   end
 
   def currentuser
