@@ -46,6 +46,8 @@ various artifacts
 /coverage
 coverage/
 
+/public/assets
+
 
 # scm revert files
 **.orig
