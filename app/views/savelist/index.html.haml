@@ -18,10 +18,35 @@
 			.clr
 		%span.edit= link_to "Edit", root_path
 	.clr
-	%h2 Sharing Options
+	%h2 Where should we send your gifts?
+	%form.shipping
+		.left
+			%label First Name: 
+			%br
+			%input{:type => "text"}
+		.right
+			%label Last Name: 
+			%br
+			%input{:type => "text"}
+		.clr
+		.left
+			%label Address: 
+			%br
+			%input{:type => "text"}
+		.right
+			%label City: 
+			%br
+			%input{:type => "text"}
+		.clr
+		.left
+			%label State: 
+			%br
+			%input{:type => "text"}
+		.right
+			%label ZIP Code: 
+			%br
+			%input{:type => "text"}
+		.clr
+	.clr
 	.sharing
-		= link_to image_tag('fb-share.png'), @share_list
-		= link_to "   See your public wishlist", "http://#{request.host}/lists/#{@list.id}"
-%a.twitter-share-button{"data-text" => "Checkout my wishlist", :href => "https://twitter.com/share"} Tweet
-:javascript
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+		= link_to "Save", "#{request.protocol}#{request.host_with_port}/lists/#{@list.id}", :class => "save"

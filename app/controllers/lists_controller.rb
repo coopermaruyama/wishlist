@@ -26,6 +26,9 @@ class ListsController < ApplicationController
           hero_img_url: item.get('MediumImage/URL'),
         )
       end
+
+    @share_link = Resque.enqueue(FBShare, current_user.id, "#{request.protocol}#{request.host_with_port}#{request.fullpath}")
+    
   end
 
   def new
