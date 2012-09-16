@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
       OpenStruct.new(
         id: item.get('ASIN'),
         name: item.get('ItemAttributes/Title'),
-        price: item.get('ItemAttributes/ListPrice/Amount').to_i / 100.0,
+        price: (item.get('ItemAttributes/ListPrice/Amount').to_i.presence || item.get('OfferSummary/LowestNewPrice/Amount').to_i)  / 100.0,
         description: HTMLEntities.new.decode(item.get('EditorialReviews/EditorialReview/Content')),
         brand: item.get('ItemAttributes/Manufacturer'),
         hero_img_url: item.get('SmallImage/URL'),
