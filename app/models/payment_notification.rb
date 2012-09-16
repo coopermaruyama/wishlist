@@ -9,6 +9,7 @@ class PaymentNotification < ActiveRecord::Base
 	def add_donation_to_wishlist
 		if status == "Completed"
 			list.update_attribute(:balance, list.balance + self.amount.to_i)
+			list.challengeBalance #Check if enough has been donated to purchase an item.
 		end
 	end
 end
