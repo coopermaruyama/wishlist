@@ -26,4 +26,17 @@ class SavelistController < ApplicationController
 			#@share_list = User.delay.share_list(current_user, "http://#{request.host}/lists/#{@list.id}")
 			#Rails.logger.error "Share list error: #{e}"
 	end
+
+	def update
+    @list =  List.find(params[:id])
+    @list.full_name = params[:list][:full_name]
+    @list.phone_number = params[:list][:phone_number]
+    @list.address1 = params[:list][:address1]
+    @list.address2 = params[:list][:address2].presence || ''
+    @list.city = params[:list][:city]
+    @list.state = params[:list][:state]
+    @list.zip_code = params[:list][:zip_code]
+    @list.save!
+    redirect_to("/lists/#{@list.id}")
+  end
 end

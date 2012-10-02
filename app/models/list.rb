@@ -1,5 +1,5 @@
 class List < ActiveRecord::Base
-  attr_accessible :category, :name, :user_id, :balance
+  attr_accessible :category, :name, :user_id, :balance, :full_name, :address1, :address2, :city, :state, :zip_code, :phone_number
   belongs_to :user
   has_many :line_items
 

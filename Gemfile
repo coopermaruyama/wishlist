@@ -14,7 +14,12 @@ gem 'factory_girl' # used to load factories in db/seeds
 gem 'faker'
 gem 'omniauth-facebook', '1.4.0'
 gem 'koala'
+
 gem 'mechanize' #for screen scraping
+gem 'capybara'
+gem 'capybara-webkit'
+gem 'launchy'
+gem 'selenium-webdriver'
 
 gem 'amazon-ecs'
 gem 'htmlentities'

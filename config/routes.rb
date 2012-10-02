@@ -19,6 +19,7 @@ Wishlist::Application.routes.draw do
     end
   end
 
+  post '/savelist', to: 'savelist#update'
 
 
   scope "api" do

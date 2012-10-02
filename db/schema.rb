@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120916091549) do
+ActiveRecord::Schema.define(:version => 20121001193135) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -40,9 +40,16 @@ ActiveRecord::Schema.define(:version => 20120916091549) do
     t.integer  "user_id"
     t.string   "category"
     t.string   "name"
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
-    t.decimal  "balance",    :precision => 8, :scale => 2
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.decimal  "balance",      :precision => 8, :scale => 2
+    t.string   "full_name"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
+    t.string   "phone_number"
   end
 
   create_table "payment_notifications", :force => true do |t|

@@ -50,7 +50,7 @@ class ListsController < ApplicationController
   end
 
   def update
-    @list = List.find(params[:list])
+    @list = List.find(params[:list]) || List.find(params[:list].keys)
     if @list.update_attributes params[:list]
       format.json { head :no_content }
     else

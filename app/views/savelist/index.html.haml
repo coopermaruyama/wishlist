@@ -19,34 +19,41 @@
 		%span.edit= link_to "Edit", root_path
 	.clr
 	%h2 Where should we send your gifts?
-	%form.shipping
+	= form_for :list, :html => {:class => 'shipping'} do |form|
 		.left
-			%label First Name: 
+			%label Full Name: 
 			%br
-			%input{:type => "text"}
+			= form.text_field :full_name
 		.right
-			%label Last Name: 
+			%label Phone Number:
 			%br
-			%input{:type => "text"}
+			= form.text_field :phone_number
 		.clr
 		.left
 			%label Address: 
 			%br
-			%input{:type => "text"}
+			= form.text_field :address1
 		.right
-			%label City: 
+			%label Address Line 2: 
 			%br
-			%input{:type => "text"}
+			= form.text_field :address2
 		.clr
 		.left
+			%label City: 
+			%br
+			= form.text_field :city
+		.right
 			%label State: 
 			%br
-			%input{:type => "text"}
-		.right
+			= form.text_field :state
+		.clr
+		.left
 			%label ZIP Code: 
 			%br
-			%input{:type => "text"}
+			= form.text_field :zip_code
+			%input{:type => "hidden", :value => @list.id, :name => "id"}
 		.clr
+		= form.submit
 	.clr
 	.sharing
-		= link_to "Save", "#{request.protocol}#{request.host_with_port}/lists/#{@list.id}", :class => "save"
+		- #link_to "Save", "#{request.protocol}#{request.host_with_port}/lists/#{@list.id}", :class => "save"
