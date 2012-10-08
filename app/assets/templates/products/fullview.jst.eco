@@ -1,19 +1,19 @@
 <div class='clr'></div>
 <div class='field'>
 	<img src="/assets/back.png" id="back-button"/>
-	<img class="main-image" src="<%= @model.attributes.table.hero_img_url %>">
+	<img class="main-image" src="<%= @model.get('hero_img_url') %>">
 	<div class="right">
 		<h2 class="product-title">
-			<%= @model.attributes.table.name %>
+			<%= @model.get('name') %>
 		</h2>
 		<span class="product-brand">
-				By <%= @model.attributes.table.brand %>
+				By <%= @model.get('brand') %>
 		</span>
-		<p class="description"><%= $('<div />').html(@model.attributes.table.description).text() %></p>
-		<span class="price">Price: $<%= @model.attributes.table.price %></span>
+		<p class="description"><%= $('<div />').html(@model.get('description')).text() %></p>
+		<span class="price">Price: $<%= @model.get('price') %></span>
 		<br>
 		<button id="add-button" class="btn btn-success">Add to Wishlist</button>
 		<hr>
 	</div>
-	<iframe scrolling="no" class="reviews" src="<%= @model.attributes.table.reviews %>">
+	<iframe scrolling="no" class="reviews" src="<%= @model.get('reviews') %>">
 </div>

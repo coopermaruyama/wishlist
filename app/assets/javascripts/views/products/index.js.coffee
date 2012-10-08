@@ -165,7 +165,7 @@ class Wishlist.Views.FullProductView extends Backbone.View
     $.cookie('products', ids.join(','))
     window.wishlist.add(@model)
     #add model
-    view = new Wishlist.Views.listItem({model: @model})
+    view = new Wishlist.Views.listItem(model: @model)
     @back()
 
 
@@ -203,6 +203,7 @@ class Wishlist.Views.Product extends Backbone.View#single item view
       fetch = model.fetch()
       fetch.complete ->
         window.mprod = model
+        model.attributes = model.attributes.table #investigate this
         view = new Wishlist.Views.FullProductView(model: model)
         view.render()
 
