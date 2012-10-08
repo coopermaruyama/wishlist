@@ -1,43 +1,33 @@
+#gift-cart
+	#items-tab
+		%span#items-tab-count
+		%span Items
+	#inner-gift-cart
+		#list-items
 .wrapper
 	%h1#headline
 		%span#first Get What You Want.
 		%span#second Give What They'll Love.
-	.wishlist
-		#header
-			%select#wishlist-type{:type => "list"}
-				%option Birthday Wishlist
-				%option Christmas Wishlist
-				%option Wedding Wishlist
-				%option General Wishlist
-				%option Baby Wishlist
-				%option Organization/Non-Profit
-				%option Hannukah Wishlist
-				%option Graduation Wishlist
-				%option Valentine's Day
-				%options Father's Day
-				%option Mother's Day
-		.clr
-		#list-items
-		#search-container
-		#product-list-container
-			%ul#product-list
-		#saveList
-			%h1 Save Your Wishlist
-			%p Where would you like your items shipped to?
-			%form{:action => "#"}
-				.row
-					.input-field
-						%label{:for => "address"} Address:
-						.clr
-						%input{:type => "text", :name => "address", :size => "35"}
-					.input-field
-						%label{:for => "zip"} ZIP Code:
-						.clr
-						%input{:type => "text", :name => "zip", :size => "10"}
-			.clr
-			%p How would you like to share your list?
-			.row
-				.input-field
-					= image_tag('facebook-logo.png')
-	#saveListContainer
-		%img.save-button{:src => image_path('button-save.png')}
+	#category
+		/ %select#wishlist-type{:type => "list"}
+		/ 	%option Birthday Wishlist
+		/ 	%option Christmas Wishlist
+		/ 	%option Wedding Wishlist
+		/ 	%option General Wishlist
+		/ 	%option Baby Wishlist
+		/ 	%option Organization/Non-Profit
+		/ 	%option Hannukah Wishlist
+		/ 	%option Graduation Wishlist
+		/ 	%option Valentine's Day
+		/ 	%options Father's Day
+		/ 	%option Mother's Day
+	#search-container
+#full-view-container
+#product-list-container
+	%ul#product-list
+		= image_tag 'description.png', :class => "description"
+.wrapper
+	#saveList
+		%form{:action => "#"}
+#saveListContainer
+	%img.save-button{:src => image_path('button-save.png')}

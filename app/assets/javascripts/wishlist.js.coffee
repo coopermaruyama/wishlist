@@ -31,3 +31,8 @@ $(document).ready ->
 
 	window.signupUser = ->
 		$('#lightBox').show()
+
+	window.hideNotify = ->
+		$('.notification').fadeOut(1000)
+
+	setTimeout("hideNotify()", 2000)

@@ -1,15 +1,13 @@
 <div class='clr'></div>
-<div class='row'>
-	<div class='bullet'>
-		<img class='start' src='/assets/check.png'>
-	</div>
-	<div class='field'>
-		<img class="list-item-image" src="<%= @model.get('hero_img_url') %>">
-		<p class="list-item">
-			<%= @model.get('name') %>
-			<span class="list-item-span">
-				By <%= @model.get('brand') %>
-			</span>
-		</p>
-	</div>
+<div class='field'>
+	<img class="list-item-image" src="<%= @model.get('hero_img_url') %>">
+	<p class="list-item">
+		<%= @model.get('name') %>
+		<span class="list-item-span">
+			By <%= @model.get('brand') %>
+		</span>
+	</p>
+	<span class="price">$<%= @model.get('price') %></span>
+	<a href="#" class="delete">Delete</a>
+	<hr>
 </div>

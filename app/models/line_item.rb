@@ -8,7 +8,7 @@ class LineItem < ActiveRecord::Base
   require "capybara-webkit"
   include Capybara::DSL
 
-  def amazonPurchase()
+  def amazonPurchase
   	Capybara.run_server = false
     Capybara.current_driver = :selenium
     Capybara.reset_sessions!
@@ -47,10 +47,10 @@ class LineItem < ActiveRecord::Base
     #Page 7 (Payment)
     sleep(5)
     Capybara.find(:xpath, "//tbody[@id='existing-credit-cards']//input[@type='radio']").click
-    if Capybara.page.has_content?('Please re-enter your card number')
-      Capybara.find(:xpath, "//tbody[@id='existing-credit-cards']//input[@class='validate' and @type='text']").set('4427427031164223')
-      Capybara.find(:xpath, "//tbody[@id='existing-credit-cards']//input[@alt='Confirm Card' and @type='image']").click
-    end
+    # if Capybara.page.has_content?('Please re-enter your card number')
+    #   Capybara.find(:xpath, "//tbody[@id='existing-credit-cards']//input[@class='validate' and @type='text']").set('4427427031164223')
+    #   Capybara.find(:xpath, "//tbody[@id='existing-credit-cards']//input[@alt='Confirm Card' and @type='image']").click
+    # end
     Capybara.click_button('Continue')
     # Capybara.click_button('Place Your Order')
     #Complete!

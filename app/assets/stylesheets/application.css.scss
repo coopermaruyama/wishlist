@@ -37,6 +37,16 @@ $darkgreen: #3f6a1f;
     font-style: normal;
 }
 @font-face {
+    font-family: 'League Gothic';
+    src: font-url('league_gothic.eot');
+    src: font-url('league_gothic.eot?#iefix') format('embedded-opentype'),
+         font-url('league_gothic.woff') format('woff'),
+         font-url('league_gothic.ttf') format('truetype'),
+         font-url('league_gothic.svg#league_gothic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
     font-family: 'DearJoe';
     src: font-url('dj5ctrial.eot');
     src: font-url('dj5ctrial.eot?#iefix') format('embedded-opentype'),
@@ -83,6 +93,9 @@ $darkblue: #67989e;
 $lightblue: lighten($darkblue, 20%);
 $orange: #ff9c00;
 $chocolate: #6a401f;
+hr { display: block; height: 1px;
+    border: 0; border-top: 1px solid #ccc;
+    margin: 1em 0; padding: 0; }
 .clr {
 	clear: both;
 }
@@ -96,6 +109,8 @@ body {
 h1,h2,h3,h4 {
 	font-family:'Helvetica Neue', 'Helvetica', Arial, sans-serif;
 	font-weight: bold;
+	margin-bottom: 1em;
+	
 }
 p,body {
 	font-family:'Helvetica Neue', 'Helvetica', Arial, sans-serif;
@@ -103,6 +118,9 @@ p,body {
 }
 
 header {
+	z-index:999999999;
+	position:fixed;
+	top:0;
 	width: 100%;
 	height: 49px;
 	background-image: image-url('header-bg.png');
@@ -304,6 +322,7 @@ p.notice {
 	display:block;
 	border-radius: 4px;
 	border: 1px solid #73b33b;
+	margin-top: 63px;
 }
 .notification p {
 	margin: 0;

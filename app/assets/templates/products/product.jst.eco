@@ -1,13 +1,8 @@
 	<p class="product-title"><%= product.get('name') %></p>
-	<div class="product-image">
+	<div class="product-image" style="margin-top:<%= '-' + parseInt($('img').height())/2 + 'px' %>">
 		<img src="<%= product.get('hero_img_url') %>">
 	</div>
-	<div class="description-container" style="display:none;">
-		<img src="/assets/back.png" id="back-button"/>
-		<p class="description"><%- product.get('description') %></p>
-		<a href="#"><img src="/assets/add.png" id="add-button"/></a>
-	</div>
-	<span class="price"><%= product.get('price') %></span>
+	<span class="price">$<%= product.get('price') %></span>
 	<span class="rating"><%= product.get('rating') %></span>
 	
 	<span class="overlay"></span>

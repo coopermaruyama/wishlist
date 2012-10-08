@@ -1,5 +1,6 @@
 class Wishlist.Models.Product extends Backbone.Model
-
+	urlRoot: '/api/products/'
+	idAttribute: 'id'
 class Wishlist.Models.List extends Backbone.Model
 	
 class Wishlist.Models.LineItem extends Backbone.Model
@@ -11,3 +12,4 @@ class Wishlist.Models.CurrentUser extends Backbone.Model
 	initalize: ->
 		@fetch()
 		console.log @get('id')
+

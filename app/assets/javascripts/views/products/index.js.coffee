@@ -10,7 +10,8 @@ class Wishlist.Views.ProductsIndex extends Backbone.View
     @render()
     @cookieCheck()
     @renderSaveButton()
-
+    @collection.on("reset", @renderList, this)
+    
   cookieCheck: ->
     ids = $.cookie('products')?.split(',') || []
     window.wishlist = new Wishlist.Collections.Products #initialize wishlist for window
@@ -20,12 +21,6 @@ class Wishlist.Views.ProductsIndex extends Backbone.View
       success: (products) =>
         products.each (product) =>
           view = new Wishlist.Views.listItem(model: product)
-          ## append to view ##
-          $('#list-items').append(view.render().el)
-          listheight = ($ '.wishlist').height()
-          rowheight = ($ '.row').height()
-          newheight = rowheight + listheight
-          ($ '.wishlist').height(newheight)
 
   render: ->
     $(@el).html(@template())
@@ -42,46 +37,61 @@ class Wishlist.Views.ProductsIndex extends Backbone.View
     this
 
   search: (e) ->#fires on keyup
-    letters = $('input.input-search').val()#grab letters from input
+    letters = $('input.input-search').val()
     if letters.match(/[^a-zA-Z0-9 ]/g) isnt null#find non alphanumerics
       letters = letters.replace(/[^a-zA-Z0-9 ]/g, '')##remove non alphanumerics
       $('.input-search').val(letters)#change input box's value to cleaned value
     if letters isnt '' 
+      $('#product-list').html('<img class="loading" src="assets/ajax_loader.gif">')
+      window.loaded = 0
       clearTimeout(@searchTimeout)
       @searchTimeout = setTimeout =>
-        @collection.fetch(data: {q: letters}, success: @renderList)
+        @collection.fetch
+          data: {q: letters, i: 1}
+          success:
+            @collection.fetch
+              data: {q:letters, i:2}
+              success:
+                @collection.fetch
+                  data: {q:letters, i:3}
       , 500
+      
       #@renderList(@collection.search(letters))#search for models matching input value
       #above passes array of objects that are matched using search method on collection
-    else $('#product-list').html('')
 
   renderSaveButton: =>
     button = new Wishlist.Views.saveList
     button.render()
 
   renderList: (products) =>#passes in products COLLECTION
-    $('#product-list').html('')
-    
+    if window.loaded == 0
+      $('#product-list').html('')
+      window.loaded = 1
     products.each (product) ->#passes in product MODEL
       view = new Wishlist.Views.Product({model: product})
-      low = $('#slider-range').slider('values', 0)
-      high = $('#slider-range').slider('values', 1)
-      if product.get('price') >= low and product.get('price') <= high
-        searched = $('.input-search').val()
-        name = product.get('name')
-        bold = name.replace(searched, '<span style="font-weight:bold;color:black;">' + searched + '</span>')
-        $('#product-list').append(view.render().el)
-        $('#product-list').children().last().children('.product-title').html(bold)  
-
-  
+      view.renderItem(product)
 
 class Wishlist.Views.listItem extends Backbone.View
   template: JST['products/listitem']
   tagName: 'div'
+  events:
+    "click .delete" : "delete"
+  initialize: ->
+    @render()
   render: (data) ->
     $(@el).html(@template(model: @model)) if @model
+    $('#items-tab-count').text(window.wishlist.length)
+    $('#list-items').append(@el)
     @
+  renderCart: (view) ->
+    $('#items-tab-count').text(window.wishlist.length)
+    $('#list-items').append(view.render().el)
 
+  delete: (element) ->
+    element.preventDefault()
+    element.stopPropagation()
+    @model.destroy()
+  
 class Wishlist.Views.saveList extends Backbone.View
   template: JST['products/saveList']
   tagName: 'span'
@@ -124,73 +134,79 @@ class Wishlist.Views.saveList extends Backbone.View
 
       #list.add(model: @model)
 
+class Wishlist.Views.FullProductView extends Backbone.View
+  template: JST['products/fullview']
+  el: '#full-view-container'
+  tagName: 'div'
+  className: 'full-view'
+
+  events:
+    "click #back-button" : "back"
+    "click #add-button" : "add"
+
+  initialize: ->
+    
+  render: ->
+    $(@el).html(@template(model: @model))
+    this
+
+  back: ->
+    $('#full-view-container').fadeOut(500)
+    $('#product-list').fadeIn(500)
+    $('#headline, #search-container').slideDown(500)
+
+  add: (element) ->
+    element.preventDefault()
+    element.stopPropagation()
+    #add a cookie
+    window.addprod = @model
+    ids = $.cookie('products')?.split(',') || []
+    ids.push(@model.get('id'))
+    $.cookie('products', ids.join(','))
+    window.wishlist.add(@model)
+    #add model
+    view = new Wishlist.Views.listItem({model: @model})
+    @back()
+
+
 class Wishlist.Views.Product extends Backbone.View#single item view
   template: JST['products/product']
   events: 
     "hover" : "overlay"
     "click .overlay" : "grow"
-    "click #back-button" : "back"
-    "click #add-button": "addItem"
 
   tagName: 'div'
   className: 'product'
   
   overlay: (element) ->
-    $(element.currentTarget).toggleClass('hover') unless $(element.currentTarget).attr('class').match(/full-view/i)#$(element.currentTarget) is uequivalent $(this)
+    $(element.currentTarget).toggleClass('hover') unless $(element.currentTarget).attr('class').match(/full-view/i)# $(element.currentTarget) != $(this)
 
-  addItem: (element) ->
-    element.preventDefault()
-    element.stopPropagation()
-    prodname = @model.get('name')
-    console.log @model
-    html = "<div class='clr'></div><div class='row'><div class='bullet'><img class='start' src='/assets/check.png'></div><div class='field'><img class=\"list-item-image\" src=\"" + @model.get('hero_img_url') + "\"><p class=\"list-item\">&nbsp;" + prodname + "<span class=\"list-item-span\">By " + @model.get('brand') + "</span></p></div></div>"
-    $('#search-container').prepend html
-    listheight = ($ '.wishlist').height()
-    rowheight = ($ '.row').height()
-    newheight = rowheight + listheight
-    ($ '.wishlist').height(newheight)
-    # same as back method #
-    $elem = $(element.currentTarget).parent().parent().parent()
-    $elem.children('.description-container').hide()
-    $elem.removeClass('full-view')
-    $elem.animate({width: '118px', height: '140px'}, 400)
-    $elem.append('<span class="overlay"></span>')
-    $elem.addClass('hover')
-    $('.filters').show()
-    $elem.parent().children().each ->
-      $(this).fadeIn()
-    #add a cookie
-    ids = $.cookie('products')?.split(',') || []
-    ids.push(@model.get('id'))
-    $.cookie('products', ids.join(','))
-    window.wishlist.add(@model)
+  renderItem: (product) =>
+    low = $('#slider-range').slider('values', 0)
+    high = $('#slider-range').slider('values', 1)
+    if product.get('price') >= low and product.get('price') <= high
+      searched = $('.input-search').val()
+      if product.get('name').length < 35 then name =  product.get('name') else name = product.get('name').substr(0,35) + "..."
+      regex = new RegExp("\\b" + searched + "\\b", "i")
+      bold = name.replace(regex, '<span style="font-weight:bold;color:#F1592B;text-transform:capitalize;">' + searched + '</span>')
+      $('#product-list').append(@render().el)
+      $('#product-list').children().last().children('.product-title').html(bold)
 
   grow: (element) ->
+      $('#full-view-container').html('<img class="loading" src="assets/ajax_loader.gif">')
       parent = $('#product-list')
-      position = parent.children().index($(element.currentTarget).parent())
-      parent.children().each ->
-        if $(this).index() isnt position
-          $(this).hide()
-        if $(this).index() is position
-          $('.filters').hide()
-          $(this).removeClass('hover')
-          $(this).addClass('full-view')
-          $(this).animate({width: '540px', height: '492px'}, 400)
-          $(this).children('.overlay').remove()
-          $(this).children('.description-container').show()
-          $(this).attr('id', 'open')
+      parent.fadeOut 300
+      $('#headline,#search-container').slideUp()
+      $('#full-view-container').fadeIn(900)
+      model = new Wishlist.Models.Product
+      model.id = @model.get('id')
+      fetch = model.fetch()
+      fetch.complete ->
+        window.mprod = model
+        view = new Wishlist.Views.FullProductView(model: model)
+        view.render()
 
         
-  back: (element) ->
-    $elem = $(element.currentTarget).parent().parent()
-    $elem.children('.description-container').hide()
-    $elem.removeClass('full-view')
-    $elem.animate({width: '118px', height: '140px'}, 400)
-    $elem.append('<span class="overlay"></span>')
-    $elem.addClass('hover')
-    $('.filters').show()
-    $elem.parent().children().each ->
-      $(this).fadeIn()
 
 
   render: (data) ->#needs a MODEL passed to it!

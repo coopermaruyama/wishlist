@@ -3,6 +3,7 @@ class Wishlist.Collections.Products extends Backbone.Collection
 
   url: '/api/products'
 
+
   search: (letters) ->
     if letters == "" then this
 

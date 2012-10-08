@@ -1,14 +1,8 @@
 
 	
 	<div class='clr'></div>
-	        <div class='row'>
-	          <div class='bullet'>
-	            <img class='start' src='/assets/star.png'>
-	          </div>
-	          <div class='field'>
-					<input type="text" placeholder="start adding to your wishlist..." class="input-search" id="product-input">
-				</div>
-	        </div>
+			<input type="text" placeholder="start adding to your wishlist..." class="input-search" id="product-input">
+			<button name="search" id="search-button">Search</button>
 	        <div class='clr'></div>
 	          <div class='filters'>
 	            <span id='pricelabel'>Price:</span>
