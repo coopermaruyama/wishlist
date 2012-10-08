@@ -16,6 +16,7 @@ gem 'omniauth-facebook', '1.4.0'
 gem 'koala'
 
 gem 'mechanize' #for screen scraping
+gem 'capybara'
 
 
 gem 'amazon-ecs'
@@ -60,7 +61,6 @@ group :test, :development do
   gem 'sqlite3'
   gem 'nifty-generators'
 
-  gem 'capybara'
   gem 'capybara-webkit'
   gem 'launchy'
   gem 'selenium-webdriver'
