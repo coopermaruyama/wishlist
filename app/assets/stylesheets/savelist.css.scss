@@ -95,6 +95,9 @@ form.shipping {
 		float: right;
 		width: 48%;
 	}
+	input[type=submit] {
+		cursor:pointer;
+	}
 }
 
 a.save {

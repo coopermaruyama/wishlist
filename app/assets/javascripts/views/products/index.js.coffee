@@ -27,7 +27,7 @@ class Wishlist.Views.ProductsIndex extends Backbone.View
     $(@containerEl).html(@el)
     $('#slider-range').slider(#initialize slider!
       range: true
-      min: 0
+      min: 1
       max: 1000
       values: [0,500]
       slide: (event, ui) ->

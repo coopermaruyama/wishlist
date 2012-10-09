@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
       OpenStruct.new(
         id: item.get('ASIN'),
         name: item.get('ItemAttributes/Title'),
-        price: (item.get('ItemAttributes/ListPrice/Amount').to_i.presence || item.get('OfferSummary/LowestNewPrice/Amount').to_i)  / 100.0,
+        price: (item.get('ItemAttributes/ListPrice/Amount').presence || item.get('OfferSummary/LowestNewPrice/Amount')).to_i / 100.0,
         description: HTMLEntities.new.decode(item.get('EditorialReviews/EditorialReview/Content')),
         brand: item.get('ItemAttributes/Manufacturer'),
         hero_img_url: item.get('SmallImage/URL'),
@@ -29,7 +29,7 @@ class ProductsController < ApplicationController
     @product = OpenStruct.new(
         id: @result.items.first.get('ASIN'),
         name: @result.items.first.get('ItemAttributes/Title'),
-        price: (@result.items.first.get('ItemAttributes/ListPrice/Amount').to_i.presence || @result.items.first.get('OfferSummary/LowestNewPrice/Amount').to_i)  / 100.0,
+        price: (@result.items.first.get('ItemAttributes/ListPrice/Amount').presence || @result.items.first.get('OfferSummary/LowestNewPrice/Amount')).to_i / 100.0,
         description: HTMLEntities.new.decode(@result.items.first.get('EditorialReviews/EditorialReview/Content')),
         brand: @result.items.first.get('ItemAttributes/Manufacturer'),
         hero_img_url: @result.items.first.get('LargeImage/URL'),

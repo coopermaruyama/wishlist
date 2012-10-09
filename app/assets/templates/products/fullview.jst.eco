@@ -7,7 +7,7 @@
 			<%= @model.get('name') %>
 		</h2>
 		<span class="product-brand">
-				By <%= @model.get('brand') %>
+				<%= "By " + @model.get('brand') if @model.get('brand')? %>
 		</span>
 		<p class="description"><%= $('<div />').html(@model.get('description')).text() %></p>
 		<span class="price">Price: $<%= @model.get('price') %></span>
