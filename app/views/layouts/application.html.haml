@@ -25,6 +25,7 @@
     = javascript_include_tag 'https://getfirebug.com/firebug-lite.js'
     = csrf_meta_tags
   %body
+    = render :partial => "/layouts/login"
     = render :partial => "/layouts/header"
     - if notice or alert
       .notification

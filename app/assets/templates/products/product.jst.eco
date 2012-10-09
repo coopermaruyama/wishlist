@@ -1,6 +1,6 @@
 	<p class="product-title"><%= product.get('name') %></p>
-	<div class="product-image" style="margin-top:<%= '-' + parseInt($('img').height())/2 + 'px' %>">
-		<img src="<%= product.get('hero_img_url') %>">
+	<div class="product-image" style="margin-top:<%= '-' + parseInt($('img.thumbnail').height())/2 + 'px' %>">
+		<img src="<%= product.get('hero_img_url') %>" class="thumbnail">
 	</div>
 	<span class="price">$<%= product.get('price') %></span>
 	<span class="rating"><%= product.get('rating') %></span>

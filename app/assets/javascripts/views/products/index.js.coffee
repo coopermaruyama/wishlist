@@ -107,16 +107,22 @@ class Wishlist.Views.saveList extends Backbone.View
   redirect: ->
     console.log 'redirect'
 
-  saveWishlist: ->
+  saveWishlist: (element) ->
+    element.preventDefault()
     user = new Wishlist.Models.CurrentUser()
     fetch = user.fetch()
     fetch.complete ->
       userid = user.get('id')
       if userid is undefined
         console.log 'userid is undefined!'
-        window.location.replace('/sign_up/')
         #TODO undefined reaction
-        
+        $('#login-modal').modal
+          onOpen: (dialog) ->
+            dialog.overlay.fadeIn 'fast', ->
+              dialog.data.hide()
+              dialog.container.fadeIn 'medium', ->
+                dialog.data.slideDown 'medium'
+      
       else
         #lists = new Wishlist.Collections.Lists()
         list = new Wishlist.Models.List()
