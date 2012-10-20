@@ -424,8 +424,12 @@ img#sharewishes {
 	padding: 5px 100px;
 	font: normal normal 12px/1.5em 'Lucida Grande', 'Lucia Sans Unicode', 'Lucida Sans', sans-serif;
 	color: #5b5b5b;
-	width: 243px;
+	width: 370px;
 	height: 13px;
+	a.active {
+		text-decoration: none;
+		color:#ccc;
+	}
 	
 	#slider-range {
 		float: left;

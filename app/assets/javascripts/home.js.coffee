@@ -14,3 +14,12 @@ $(document).ready ->
 		if cart.css('right') is '0px' then $('#gift-cart').animate {right: cartpx}, 400
 	$('#inner-gift-cart').click (e) ->
 		e.stopPropagation()
+
+	($ '.price-select').click (e) ->
+		e.preventDefault()
+		unless $('#product-input').val() == ''
+			$('.price-select').removeClass('active')
+			$(this).addClass('active')
+			range = if $(this).attr('id') is '500+' then [500,999999999999] else $(this).attr('id').split('-')
+			$('#low-price').val(range[0])
+			$('#high-price').val(range[1])

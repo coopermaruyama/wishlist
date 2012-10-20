@@ -6,6 +6,13 @@
 	        <div class='clr'></div>
 	          <div class='filters'>
 	            <span id='pricelabel'>Price:</span>
-	            <div id='slider-range'></div>
-	            <input id='amount' type='text'>
+	            <a href="#" class="price-select" id="0-50">$50 and under</a>
+	            <a href="#" class="price-select" id="50-100">$50-$100</a>
+	            <a href="#" class="price-select" id="100-250">$100-$250</a>
+	            <a href="#" class="price-select" id="250-500">$250-$500</a>
+	            <a href="#" class="price-select" id="500+">$500+</a>
+	            <input type="hidden" id="low-price" value="0">
+	            <input type="hidden" id="high-price" value="1000">
+	            <!-- <div id='slider-range'></div> -->
+	            <!-- <input id='amount' type='text'> -->
 	          </div>

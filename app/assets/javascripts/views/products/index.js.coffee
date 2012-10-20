@@ -2,7 +2,7 @@ class Wishlist.Views.ProductsIndex extends Backbone.View
   events:#fire search even on key up
     "keyup input.input-search": "search"
     "mouseup .ui-slider-handle" : "search"
-
+    "click .price-select" : "search"
   template: JST['products/index']#define template location
  
   initialize: ->
@@ -188,8 +188,8 @@ class Wishlist.Views.Product extends Backbone.View#single item view
     $(element.currentTarget).toggleClass('hover') unless $(element.currentTarget).attr('class').match(/full-view/i)# $(element.currentTarget) != $(this)
 
   renderItem: (product) =>
-    low = $('#slider-range').slider('values', 0)
-    high = $('#slider-range').slider('values', 1)
+    low = parseInt($('#low-price').val())
+    high = parseInt($('#high-price').val())
     if product.get('price') >= low and product.get('price') <= high
       searched = $('.input-search').val()
       if product.get('name').length < 35 then name =  product.get('name') else name = product.get('name').substr(0,35) + "..."
