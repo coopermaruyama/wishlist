@@ -20,3 +20,11 @@
 #donate:hover {
 	opacity: 0.85;
 }
+
+body.vday {
+	background-image: none;
+	background-color: #F7EADE !important;
+	header {
+		background-image: url('url(/assets/vday-header.png)');
+	}
+}

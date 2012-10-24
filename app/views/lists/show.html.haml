@@ -1,6 +1,6 @@
 .wrapper
 	%h1= "#{@user.first_name}'s #{@list.category} Wishlist"
-	%h2.balance= "Total Donations: $#{@list.balance || '0.00'}"
+	%h2.balance= "Total Contributions: $#{@list.balance || '0.00'}"
 	.itemscontainer
 		-@products.each do |product|
 			.image

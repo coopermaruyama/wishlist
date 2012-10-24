@@ -24,6 +24,8 @@ gem 'htmlentities'
 gem 'figaro'
 gem 'resque', "~> 1.22.0", :require => "resque/server"
 
+gem "sauce"
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -63,7 +65,7 @@ group :test, :development do
 
   gem 'capybara-webkit'
   gem 'launchy'
-  gem 'selenium-webdriver'
+  
 end
 
 group :development do

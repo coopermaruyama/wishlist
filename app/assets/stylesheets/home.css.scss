@@ -24,6 +24,7 @@ img.description {
 	right: 0px;
 }
 
+
 #gift-cart {
 	position: fixed;
 	top: 100px;
@@ -248,7 +249,7 @@ img#sharewishes {
 	}
 	
 	#search-container {
-		height: 79px;
+		height: 90px;
 		overflow-y:hidden;
 		margin-bottom: 35px;
 		margin: 0 auto;
@@ -399,15 +400,17 @@ img#sharewishes {
 #wishlist-type {
 	float: right;
 	background: transparent;
-	width: 220px;
+	width: 178px;
 	padding: 5px;
-	font-size: 16px;
-	border: 1px solid rgba(0,0,0,.8);
-	height: 32px;
-	color: #ccc;
-	margin-top: 8px;
-	margin-right: 5px;
+	font-size: 11px;
+	border: 1px solid rgba(165, 165, 165, 0.8);
+	height: 22px;
+	color: #2E5253;
+	margin-top: 3px;
+	margin-right: 3px;
 	font-weight: bold;
+	margin-top: -30px;
+	margin-right: 172px;
 }
 
 #save-button {
@@ -421,7 +424,7 @@ img#sharewishes {
 }
 //Filters
 .filters {
-	padding: 5px 100px;
+	padding: 5px 30px;
 	font: normal normal 12px/1.5em 'Lucida Grande', 'Lucia Sans Unicode', 'Lucida Sans', sans-serif;
 	color: #5b5b5b;
 	width: 370px;

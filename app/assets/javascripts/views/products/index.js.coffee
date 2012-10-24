@@ -78,6 +78,7 @@ class Wishlist.Views.listItem extends Backbone.View
     "click .delete" : "delete"
   initialize: ->
     @render()
+    @bind("reset", @updateView)
   render: (data) ->
     $(@el).html(@template(model: @model)) if @model
     $('#items-tab-count').text(window.wishlist.length)
@@ -90,7 +91,15 @@ class Wishlist.Views.listItem extends Backbone.View
   delete: (element) ->
     element.preventDefault()
     element.stopPropagation()
-    @model.destroy()
+    window.wishlist.remove(@model)
+    ids = $.cookie('products')?.split(',') || []
+    if $.inArray("",ids) isnt -1 then ids.splice(ids.indexOf(''), 1)
+    ids.splice(ids.indexOf(@model.get('id')),1)
+    $.cookie('products', ids.join(','))
+    @updateView(@model)
+  updateView: ->
+    @remove()
+    $('#items-tab-count').text(window.wishlist.length)
   
 class Wishlist.Views.saveList extends Backbone.View
   template: JST['products/saveList']
@@ -167,6 +176,7 @@ class Wishlist.Views.FullProductView extends Backbone.View
     #add a cookie
     window.addprod = @model
     ids = $.cookie('products')?.split(',') || []
+    if $.inArray("",ids) isnt -1 then ids.splice(ids.indexOf(''), 1)
     ids.push(@model.get('id'))
     $.cookie('products', ids.join(','))
     window.wishlist.add(@model)
