@@ -25,7 +25,7 @@ gem 'figaro'
 gem 'resque', "~> 1.22.0", :require => "resque/server"
 
 gem "sauce"
-
+gem 'selenium-webdriver'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
