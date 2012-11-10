@@ -1,3 +1,6 @@
+- value = {"Birthday" => "birthday", "Christmas" => "christmas", "Wedding" => "wedding", "General" => "", "Baby" => "baby", "Organization/Non-Profit" => "organization", "Hannukah" => "hannukah", "Graduation" => "graduation", "Valentine's Day" => "valentinesDay", " Father's Day" => "fathersDay", "Mother's Day" => "mothersDay"}[@list.category]
+- content_for :head do
+	= stylesheet_link_tag value
 .wrapper
 	%h1= "#{@user.first_name}'s #{@list.category} Wishlist"
 	%h2.balance= "Total Contributions: $#{@list.balance || '0.00'}"
@@ -9,11 +12,27 @@
 				%span.name= product.name
 				%span.brand= product.brand
 				%span.price= "$#{product.price}"
+				%form{:action => "https://www.paypal.com/cgi-bin/webscr", :method => "post", :class => "donateItem"}
+					%input{:name => "cmd", :type => "hidden", :value => "_donations"}
+					%input{:name => "business", :type => "hidden", :value => "baronmurdock@gmail.com"}
+					%input{:name => "lc", :type => "hidden", :value => "US"}
+					%input{:name => "item_number", :type => "hidden", :value => product.id}
+					%input{:name => "upload", :type => "hidden", :value => "1"}
+					%input{:name => "amount", :type => "hidden", :value => product.price}
+					%input{:name => "custom", :type => "hidden", :value => @list.id}
+					%input{:name => "notify_url", :type => "hidden", :value => "http://#{request.host}/payment_notifications"}
+					%input{:name => "return_url", :type => "hidden", :value => "http://#{request.host}/lists/#{@list.id}"}
+					%input{:name => "item_name", :type => "hidden", :value => "Gift for #{@list.user.first_name} #{@list.user.last_name}: #{product.name}"}
+					%input{:name => "no_note", :type => "hidden", :value => "0"}
+					%input{:name => "currency_code", :type => "hidden", :value => "USD"}
+					%input{:name => "bn", :type => "hidden", :value => "PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest"}
+					%button#donate{:alt => "PayPal - The safer, easier way to pay online!", :border => "0", :type => "submit" } Donate Item
+					%img{:alt => "", :border => "0", :height => "1", :src => "https://www.paypalobjects.com/en_US/i/scr/pixel.gif", :width => "1"}
 			.clr
 	.clr
-	%form{:action => "https://www.sandbox.paypal.com/cgi-bin/webscr", :method => "post"}
+	%form{:action => "https://www.paypal.com/cgi-bin/webscr", :method => "post"}
 		%input{:name => "cmd", :type => "hidden", :value => "_donations"}
-		%input{:name => "business", :type => "hidden", :value => "cooper_1346389188_biz@susteen.com"}
+		%input{:name => "business", :type => "hidden", :value => "baronmurdock@gmail.com"}
 		%input{:name => "lc", :type => "hidden", :value => "US"}
 		%input{:name => "upload", :type => "hidden", :value => "1"}
 		%input{:name => "custom", :type => "hidden", :value => @list.id}
@@ -22,8 +41,46 @@
 		%input{:name => "item_name", :type => "hidden", :value => "Sho Mo Love Wishlist"}
 		%input{:name => "no_note", :type => "hidden", :value => "0"}
 		%input{:name => "currency_code", :type => "hidden", :value => "USD"}
+		%input{:name => "image_url", :type => "hidden", :value => "http://shomolove.herokuapp.com/assets/logo.png"}
 		%input{:name => "bn", :type => "hidden", :value => "PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest"}
 		%button#donate{:alt => "PayPal - The safer, easier way to pay online!", :border => "0", :type => "submit" } Donate
 		%img{:alt => "", :border => "0", :height => "1", :src => "https://www.paypalobjects.com/en_US/i/scr/pixel.gif", :width => "1"}
-	%a.twitter-share-button{"data-text" => "Checkout my wishlist", "data-url" => "#{request.protocol}#{request.host_with_port}#{request.fullpath}", "data-via" => "shomolove", :href => "https://twitter.com/share"} Tweet
-	= link_to image_tag('fb-share.png'), @share_fb
+	/ AddThis Button BEGIN
+	.addthis_toolbox.addthis_default_style
+		%a.addthis_button_facebook_like{"fb:like:layout" => "button_count"}
+		%a.addthis_button_tweet
+		%a.addthis_button_pinterest_pinit
+		%a.addthis_counter.addthis_pill_style
+	:javascript
+		var addthis_config = {"data_track_addressbar":true};
+	%script{:src => "http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-509db14a1aeb57b5", :type => "text/javascript"}
+	/ AddThis Button END
+- if value == 'valentinesDay'
+	:javascript
+		$('body').addClass('vday')
+		$('img.logo').attr('src', '/assets/vday-logo.png').css('margin-top','7px')
+		$('header').css('background-image','url("/assets/vday-header.png")')
+- if value == 'birthday'
+	:javascript
+- if value == 'christmas'
+	:javascript
+		$('body').addClass('christmas')
+		$('img.logo').attr('src', '/assets/logo-christmas.png').css('margin-top','3px')
+- if value == 'wedding'
+	:javascript
+- if value == 'baby'
+	:javascript
+- if value == 'organization'
+	:javascript
+- if value == 'hannukah'
+	:javascript
+		$('body').addClass('hannukah')
+		$('img.logo').attr('src', '/assets/logo-hannukah.png').css('margin-top','3px')
+- if value == 'graduation'
+	:javascript
+		$('body').addClass('graduation')
+		$('img.logo').attr('src', '/assets/logo-graduation.png').css('margin-top','1px')
+- if value == 'fathersDay'
+	:javascript
+- if value == 'mothersDay'
+	:javascript

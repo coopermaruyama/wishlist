@@ -118,36 +118,40 @@ class Wishlist.Views.saveList extends Backbone.View
 
   saveWishlist: (element) ->
     element.preventDefault()
-    user = new Wishlist.Models.CurrentUser()
-    fetch = user.fetch()
-    fetch.complete ->
-      userid = user.get('id')
-      if userid is undefined
-        console.log 'userid is undefined!'
-        #TODO undefined reaction
-        $('#login-modal').modal
-          onOpen: (dialog) ->
-            dialog.overlay.fadeIn 'fast', ->
-              dialog.data.hide()
-              dialog.container.fadeIn 'medium', ->
-                dialog.data.slideDown 'medium'
-      
-      else
-        #lists = new Wishlist.Collections.Lists()
-        list = new Wishlist.Models.List()
-        list.set({name: 'test', category: 'bdayy'})
-        list.url = '/user/' + userid + '/list'
-        list.save()
-        lineitems = new Wishlist.Collections.LineItems()
-        lineitems.url = '/user/' + userid + '/list/line_items'
-        window.li = 0
-        window.wishlist.each (model) ->
-          id = model.get('id')
-          lineitems.create {product_id: id}, {success: lineitems.create_success, error: lineitems.create_error}
-        #window.location.replace('/savelist/')
+    if $('#wishlist-type').val() isnt 'Select Wishlist Type'
+      user = new Wishlist.Models.CurrentUser()
+      fetch = user.fetch()
+      fetch.complete ->
+        userid = user.get('id')
+        if userid is undefined
+          console.log 'userid is undefined!'
+          #TODO undefined reaction
+          $('#login-modal').modal
+            onOpen: (dialog) ->
+              dialog.overlay.fadeIn 'fast', ->
+                dialog.data.hide()
+                dialog.container.fadeIn 'medium', ->
+                  dialog.data.slideDown 'medium'
         
+        else
+          #lists = new Wishlist.Collections.Lists()
+          list = new Wishlist.Models.List()
+          listType = $('#wishlist-type').val()
+          list.set({name: 'test', category: listType})
+          list.url = '/user/' + userid + '/list'
+          list.save()
+          lineitems = new Wishlist.Collections.LineItems()
+          lineitems.url = '/user/' + userid + '/list/line_items'
+          window.li = 0
+          window.wishlist.each (model) ->
+            id = model.get('id')
+            lineitems.create {product_id: id}, {success: lineitems.create_success, error: lineitems.create_error}
+          #window.location.replace('/savelist/')
+          
 
-      #list.add(model: @model)
+        #list.add(model: @model)
+    else
+      alert "Select a type of wishlist!"
 
 class Wishlist.Views.FullProductView extends Backbone.View
   template: JST['products/fullview']

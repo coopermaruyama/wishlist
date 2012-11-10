@@ -12,7 +12,5 @@ not ((d, s, id) ->
 ) document, "script", "twitter-wjs"
 
 
-window.valentines = =>
-	$('body').addClass('vday')
-	$('img.logo').attr('src', '/assets/vday-logo.png')
-	$('header').css('background-image','url("/assets/vday-header.png")')
+
+	

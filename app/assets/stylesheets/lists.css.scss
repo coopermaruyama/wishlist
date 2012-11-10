@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'application.css.scss';
 #donate {
-	@include linear-gradient(lighten($darkgreen, 30%), $darkgreen);
+	@include linear-gradient(lighten($darkgreen, 30%), lighten($darkgreen,5%));
 	border-radius: 13px;
 	width: 100px;
 	height: 29px;
@@ -20,11 +20,76 @@
 #donate:hover {
 	opacity: 0.85;
 }
-
+.donateItem {
+	position: absolute;
+	right:16px;
+	bottom:16px;
+	#donate {
+		width: 84px;
+		height:18px;
+		font-size:10px;
+		padding-top: 3px;
+		@include linear-gradient(lighten(#FF9C00, 10%),darken(#FF9C00,10%));
+		border: darken(#FF9C00,30%);
+	}
+}
 body.vday {
-	background-image: none;
-	background-color: #F7EADE !important;
+	background: image-url('bg-valentines.jpg') center top no-repeat;
+	background-color: #eec9c8 !important;
 	header {
 		background-image: url('url(/assets/vday-header.png)');
+	}
+	h1 {
+		font-family:'DearJoe';
+		margin-top: 45px;
+		color:#B44367;
+	}
+	h2.balance {
+		color: #B44367;
+	}
+}
+body.christmas {
+	background: image-url('bg-christmas.png') left bottom no-repeat;
+	background-color: #ede7e8 !important;
+	header {
+		background-image: image-url('header-bg-christmas.png') !important;
+	}
+	h1 {
+		font-family:'DearJoe';
+		margin-top: 45px;
+		color:#1D4D1B;
+	}
+	h2.balance {
+		color: #1D4D1B;
+	}
+}
+body.graduation {
+	background: image-url('bg-graduation.png') left bottom no-repeat;
+	background-color: #ede7e8 !important;
+	header {
+		background-image: image-url('header-bg-graduation.png') !important;
+	}
+	h1 {
+		font-family:'DearJoe';
+		margin-top: 45px;
+		color:#226A8B;
+	}
+	h2.balance {
+		color: #226A8B;
+	}
+}
+body.hannukah {
+	background: image-url('bg-hannukah.png') left bottom no-repeat;
+	background-color: #bad0e7 !important;
+	header {
+		background-image: image-url('header-bg-hannukah.png') !important;
+	}
+	h1 {
+		font-family:'DearJoe';
+		margin-top: 45px;
+		color:#226A8B;
+	}
+	h2.balance {
+		color: #226A8B;
 	}
 }
