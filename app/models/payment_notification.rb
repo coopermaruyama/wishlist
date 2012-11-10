@@ -18,6 +18,7 @@ class PaymentNotification < ActiveRecord::Base
 		#TODO
 		unless self.item_number.blank?
 			list.line_items.find_by_product_id(self.item_number).destroy
-		# buy_item_from_amazon(self.item_number) 
+		# buy_item_from_amazon(self.item_number)
+		end 
 	end
 end
