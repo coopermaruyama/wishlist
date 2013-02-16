@@ -2,6 +2,11 @@ class HomeController < ApplicationController
   respond_to :json
 
   def index
+    unless cookies[:visited].present? and cookies[:visited] == "2"
+      cookies.permanent[:visited] = {:value => "1", :path => "/"}
+      redirect_to "/splash.html"
+    end
+
   	if user_signed_in?
   		@user = current_user
   	end
@@ -24,5 +29,9 @@ class HomeController < ApplicationController
   end
 
   def about
+  end
+
+  def privacy
+    
   end
 end
