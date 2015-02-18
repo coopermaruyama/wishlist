@@ -7,7 +7,7 @@ class SavelistController < ApplicationController
 		@line_items.each do |item|
 			@ids.push(item.product_id)
 		end
-		
+
 		@result = Amazon::Ecs.item_lookup(@ids.join(','), response_group: 'Medium')
 
 
