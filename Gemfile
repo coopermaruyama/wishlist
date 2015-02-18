@@ -8,7 +8,7 @@ gem 'thin'
 gem 'jquery-rails' # Let's consider using google CDN
 gem 'jquery-ui-rails'
 gem 'haml'
-gem 'therubyracer'
+gem 'therubyracer', '0.12.1'
 gem 'backbone-on-rails'
 gem 'factory_girl' # used to load factories in db/seeds
 gem 'faker'
